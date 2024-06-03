@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,50 +15,26 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Logo from '../assets/img/logo.png';
-import { useNavigate } from 'react-router-dom';
 
-const menuItems = [
-  { text: '회사소개', value: '/intro' },
-  { text: '하는 일', value: '/work' },
-  { text: '성공 사례', value: '/success' },
-  { text: '자주 묻는 질문', value: '/qna' },
-  { text: '문의하기', value: '/contact' },
-]
+const navItems = ['회사소개', '하는 일', '성공 사례', '자주 묻는 질문', '문의하기'];
 
 function DrawerAppBar(props) {
-  const { windows } = props;
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scroll, setScroll] = useState(false);
-  const navigation = useNavigate();
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  
-  const handleScroll = () => {
-    const scrollTop = window.scrollY;
-    setScroll(scrollTop);
-  }
 
-  
-  
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { capture: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    }
-  }, [])
-  
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <img src={Logo} style={{ width: '150px', filter: 'invert(1)' }} alt='logo' />
+      <img src={Logo} style={{ width: '150px' }} alt='logo' />
       <Divider />
       <List>
-        {menuItems.map((item) => (
-          <ListItem key={item.value} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} onClick={() => navigation(`${item.value}`)}>
-              <ListItemText primary={item.text} />
+        {navItems.map((item) => (
+          <ListItem key={item} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }}>
+              <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -66,13 +42,13 @@ function DrawerAppBar(props) {
     </Box>
   );
 
-  const container = windows !== undefined ? () => windows().document.body : undefined;
-  // rgb(62 83 189)
+  const container = window !== undefined ? () => window().document.body : undefined;
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ bgcolor: scroll ? 'rgb(62 83 189)' : 'transparent', transition: 'all .5s ease', borderBottom: '1px solid white' }} position='fixed'>
-        <Toolbar sx={{ width: '100%' }}>
+      <AppBar component="nav" sx={{ bgcolor: 'rgb(62 83 189)', height: '110px' }}>
+        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -81,22 +57,18 @@ function DrawerAppBar(props) {
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
-            
           </IconButton>
-          <Box sx={{ display: { xs: 'block', sm: 'none' }, width: '100%', margin: 'auto', textAlign: 'center' }}>
-              <img src={Logo} alt='logo' width={'150px'} style={{ margin: 'auto', display: 'flex', cursor: 'pointer' }} onClick={() => navigation("/")} />
-            </Box>
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, fontFamily: 'KboGothic_B !important' }}
           >
-            <img src={Logo} alt='logo' style={{ height: scroll ? '70px' : '100px', transition: 'all .5s ease', cursor: 'pointer' }} onClick={() => navigation("/")} />
+            <img src={Logo} alt='logo' />
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {menuItems.map((item) => (
-              <Button key={item.value} sx={{ color: '#fff', fontFamily: 'KboGothic_M', fontSize: 20, mr: 4 }} onClick={() => navigation(`${item.value}`)}>
-                {item.text}
+            {navItems.map((item) => (
+              <Button key={item} sx={{ color: '#fff', fontFamily: 'KboGothic_M', fontSize: 17 }}>
+                {item}
               </Button>
             ))}
           </Box>
@@ -125,7 +97,7 @@ function DrawerAppBar(props) {
 }
 
 DrawerAppBar.propTypes = {
-  windows: PropTypes.func,
+  window: PropTypes.func,
 };
 
 export default DrawerAppBar;
