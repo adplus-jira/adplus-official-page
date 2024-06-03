@@ -1,19 +1,26 @@
 import React from 'react';
 import './assets/css/common.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import IntroPage from './pages/Intro';
-
+import Header from './components/Header';
+import Works from './pages/Works';
+import QnA from './pages/QnA';
+import SuccessList from './pages/SuccessList';
+import Contact from './pages/Contact';
 
 function App() {
   return (
     <div>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<MainPage />}></Route>
-            <Route path="/intro" element={<IntroPage />}></Route>
-          </Routes>
-        </BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<MainPage />} exact ></Route>
+        <Route path="/intro" element={<IntroPage />}></Route>
+        <Route path="/work" element={<Works />}></Route>
+        <Route path="/success" element={<SuccessList />}></Route>
+        <Route path="/qna" element={<QnA />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
+      </Routes>
     </div>
   );
 }
