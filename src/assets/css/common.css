@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'KboGothic_B';
+    src: url('../font/Gothic_bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'KboGothic_M';
+    font-weight: 400;
+    src: url('../font/Gothic_medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'KboGothic_L';
+    src: url('../font/Gothic_light.ttf') format('truetype');
+}
+
+body {
+    font-family: 'KboGothic_M' !important;
+}
+
+span, p {
+    font-family: 'KboGothic_M' !important;
+}
