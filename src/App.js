@@ -8,6 +8,7 @@ import Works from './pages/Works';
 import QnA from './pages/QnA';
 import SuccessList from './pages/SuccessList';
 import Contact from './pages/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/qna" element={<QnA />}></Route>
         <Route path="/contact" element={<Contact />}></Route> 
       </Routes>
+      <Footer />
     </div>
   );
 }
