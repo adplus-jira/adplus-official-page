@@ -1,37 +1,26 @@
 import React from 'react';
 import logo from '../assets/img/logo.png'; // Import your logo image
 import Box from '@mui/material/Box'; // Import Box component from Material-UI
+import { Grid, Typography } from '@mui/material';
 
 // 
 
 const Footer = () => {
     return (
-        <Box component="footer" sx={{ backgroundColor: 'black', color: 'white', padding: '20px', textAlign: 'center' }}>
-            <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'center' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <img src={logo} alt="Company Logo" style={{ marginRight: '10px', height: '30px' }} />
-                    <div>
-                        <p style={{ marginRight: '10px', fontSize: '14px' }}>© 2022 Your Company</p>
-                        <p style={{ marginRight: '10px', fontSize: '14px' }}>Company Name: ABC Company</p>
-                        <p style={{ marginRight: '10px', fontSize: '14px' }}>Representative: John Doe</p>
-                        <p style={{ marginRight: '10px', fontSize: '14px' }}>Business Registration Number: 1234567890</p>
-                        <p style={{ marginRight: '10px', fontSize: '14px' }}>Address: 123 Main Street, City, Country</p>
-                        <p style={{ marginRight: '10px', fontSize: '14px' }}>Email: info@company.com</p>
-                        <p style={{ marginRight: '10px', fontSize: '14px' }}>Contact: +1 123-456-7890</p>
-                    </div>
-                </Box>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                    <li style={{ display: 'inline-block', marginRight: '10px' }}>
-                        <p style={{ color: 'white', textDecoration: 'none' }}>Home</p>
-                    </li>
-                    <li style={{ display: 'inline-block', marginRight: '10px' }}>
-                        <p style={{ color: 'white', textDecoration: 'none' }}>About</p>
-                    </li>
-                    <li style={{ display: 'inline-block', marginRight: '10px' }}>
-                        <p style={{ color: 'white', textDecoration: 'none' }}>Contact</p>
-                    </li>
-                </ul>
-            </Box>
+        <Box component="footer" sx={{ backgroundColor: '#2b2b2b', color: '#adadad', padding: '30px' }}>
+            <Grid container paddingX={{ xs: 5, md: 30 }} marginBottom={5}>
+                <Grid item xs={12} md={6} lg={6}>
+                    <img src={logo} alt="logo" style={{ width: '200px' }} />
+                    <Box sx={{ fontSize: 14 }}>
+                        <Typography fontSize={15} >
+                            상호 : 애드플러스 | 대표 : 김용석 | 사업자등록번호 : 123-123-123<br />
+                            주소 : 서울특별시 강서구 공항대로 213 619호<br />
+                            이메일 : test@naver.com | 연락처 : 010-1234-1234
+                        </Typography>
+                    </Box>
+                </Grid>
+            </Grid>
+            <hr style={{ width: '80%' }} />
         </Box>
     );
 };
