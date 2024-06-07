@@ -6,8 +6,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 function Contact() {
 
     return (
-        <Grid container paddingY={10} paddingX={{ xs: 3, md: 30}}>
-          <Grid item xs={12} md={6} lg={6} padding={3}>
+        <Grid container paddingY={10} paddingX={{ xs: 3, md: 30 }} maxWidth={2000} margin={'auto'}>
+          <Grid item xs={12} md={6} lg={6}>
             <Box width={'100%'} sx={{ fontSize: 23 }}>
               <h1 style={{ color: '#5161b5' }}>문의하기</h1>
                 <hr style={{ width: '100%', height: '3px', backgroundColor: '#5161b5' }} />

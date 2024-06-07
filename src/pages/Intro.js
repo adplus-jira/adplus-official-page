@@ -4,6 +4,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import AirplayIcon from '@mui/icons-material/Airplay';
 import CompanyIntro from '../assets/img/company_intro.png';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import Contacts from "../components/Contacts";
 
 export default function IntroPage() {
 
@@ -98,6 +99,7 @@ export default function IntroPage() {
                     </Box>
                 </Box>
             </Box>
+            <Contacts />
         </BasicLayout>
     );
 }

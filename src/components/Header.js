@@ -58,7 +58,7 @@ function DrawerAppBar(props) {
                 {menuItems.map((item) => (
                     <ListItem key={item.value} disablePadding>
                         <ListItemButton sx={{ textAlign: 'center' }} onClick={() => navigation(`${item.value}`)}>
-                            <ListItemText primary={item.text} sx={{ color: '#e5e5e5' }} />
+                            <ListItemText disableTypography primary={item.text} sx={{ color: '#333', fontFamily: 'KboGothic_M' }} />
                         </ListItemButton>
                     </ListItem>
                 ))}

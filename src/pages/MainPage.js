@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../assets/css/common.css';
 import { Box, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import Banner from '../assets/img/main_banner.jpg';
@@ -7,25 +7,25 @@ import Contacts from '../components/Contacts';
 import SecondSectionImg from '../assets/img/main_2.jpg';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { Transition } from 'react-transition-group';
 
 const CircleLayout = ({ value, index }) => {
     return (
         <div>
             <Box
                 key={index}
-                width={{ xs: 150, md: 170, lg: 190 }}
-                height={{ xs: 150, md: 170, lg: 190 }}
+                width={{ xs: 180, md: 170, lg: 220 }}
+                height={{ xs: 180, md: 170, lg: 220 }}
                 textAlign={'center'}
                 textOverflow={'break-word'}
                 sx={{
                     border: '4px solid #838fd3',
                     borderRadius: '50%',
-                    backgroundColor: 'white',
+                    backgroundColor: '#f6f8ff',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     fontFamily: 'KboGothic_M',
-                    fontSize: 17,
                     color: '#3e53bd',
                     margin: 'auto',
                     marginBottom: '10px',
@@ -36,7 +36,7 @@ const CircleLayout = ({ value, index }) => {
                     }
                 }}
             >
-                <p style={{ fontSize: 22, fontWeight: 'bold' }}>{value}</p>
+                <Typography variant='p' fontSize={{ xs: 18, md: 23 }} fontWeight={'bold'}>{value}</Typography>
             </Box>
 
         </div>
@@ -49,7 +49,7 @@ function worksLayout({ work, index }) {
             <Box width={'100%'} height={{ xs: 400, md: 500 }} sx={{
                 backgroundImage: `url('${work.url}')`,
                 backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
+                backgroundSize: '100%',
                 backgroundPosition: 'center'
             }}>
                 <Box width={'100%'} height={'100%'} sx={{
@@ -113,18 +113,18 @@ function MainPage() {
     };
 
     const sliderImageUrl = [{
-            url: "https://i2.wp.com/www.geeksaresexy.net/wp-content/uploads/2020/04/movie1.jpg?resize=600%2C892&ssl=1"
-        }, {
-            url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-kids-movies-2020-call-of-the-wild-1579042974.jpg?crop=0.9760858955588091xw:1xh;center,top&resize=480:*"
-        }, {
-            url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-movies-for-kids-2020-sonic-the-hedgehog-1571173983.jpg?crop=0.9871668311944719xw:1xh;center,top&resize=480:*"
-        }, {
-            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQS82ET2bq9oTNwPOL8gqyoLoLfeqJJJWJmKQ&usqp=CAU"
-        }, {
-            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTdvuww0JDC7nFRxiFL6yFiAxRJgM-1tvJTxA&usqp=CAU"
-        }, {
-            url: "https://i2.wp.com/www.geeksaresexy.net/wp-content/uploads/2020/04/movie1.jpg?resize=600%2C892&ssl=1"
-        },
+        url: "https://i2.wp.com/www.geeksaresexy.net/wp-content/uploads/2020/04/movie1.jpg?resize=600%2C892&ssl=1"
+    }, {
+        url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-kids-movies-2020-call-of-the-wild-1579042974.jpg?crop=0.9760858955588091xw:1xh;center,top&resize=480:*"
+    }, {
+        url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-movies-for-kids-2020-sonic-the-hedgehog-1571173983.jpg?crop=0.9871668311944719xw:1xh;center,top&resize=480:*"
+    }, {
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQS82ET2bq9oTNwPOL8gqyoLoLfeqJJJWJmKQ&usqp=CAU"
+    }, {
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTdvuww0JDC7nFRxiFL6yFiAxRJgM-1tvJTxA&usqp=CAU"
+    }, {
+        url: "https://i2.wp.com/www.geeksaresexy.net/wp-content/uploads/2020/04/movie1.jpg?resize=600%2C892&ssl=1"
+    },
     ];
 
     const works = [{
@@ -157,13 +157,39 @@ function MainPage() {
     }
     ];
 
+    const nodeRef = React.useRef(null);
+    const [isInViewport, setIsInViewport] = React.useState(false);
+    
+    useEffect(() => {
+        if (!nodeRef.current) return;
+
+        const callback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setIsInViewport(true);
+                } else {
+                    setIsInViewport(false);
+                }
+            });
+        };
+        
+        const options = { root: null, rootMargin: '0px', threshold: 0.7 };
+
+        const observer = new IntersectionObserver(callback, options);
+        observer.observe(nodeRef.current);
+
+        return () => {
+            observer.disconnect();
+        }
+    }, [])
+
     return (
         <div>
             <div style={{ width: '100%' }}>
                 <Box sx={{
                     backgroundImage: `url(${Banner})`,
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
+                    backgroundSize: '100%',
                     width: '100%',
                     height: '100vh'
                 }}>
@@ -180,13 +206,13 @@ function MainPage() {
                             <hr style={{ border: '2px solid #e5e5e5', width: '50%', margin: 'auto', marginTop: '20px', marginBottom: 20 }} />
                             AD PLUS
                         </Typography>
-                        
+
                     </Box>
                 </Box>
-                <Grid container paddingY={10} paddingX={{ xs: 3, md: 30 }}>
+                <Grid container paddingY={10} paddingX={{ xs: 3, md: 30 }} maxWidth={2000} margin={'auto'}>
                     <Grid item xs={12} md={6} lg={6} paddingX={{ xs: 1, md: 5 }} >
                         <Box width={'100%'} paddingTop={10} sx={{ fontSize: 21 }}>
-                            <h1><span style={{ color: 'green' }}>재계약률</span>을 보고<br />마케팅사를 고르세요</h1>
+                            <h1><span style={{ color: '#5161b5' }}>재계약률</span>을 보고<br />마케팅사를 고르세요</h1>
                             <Typography sx={{ fontFamily: 'KboGothic_L', fontSize: { sm: 12, md: 22 }, color: '#757575' }}>
                                 실력있는 법률마케팅사를 고르는 1가지 기준이 있다면, 바로 재계약률입니다.<br />
                                 얼마나 오랜기간, 얼마나 많은 작업을 했는지도 물론 중요하지만, 그것보다<br />
@@ -206,32 +232,34 @@ function MainPage() {
                     </Grid>
                 </Grid>
                 {/* 광고 작업 */}
-                <Grid container spacing={0} paddingTop={3}>
+                <Grid container spacing={0} paddingTop={3} maxWidth={2000} margin={'auto'}>
                     {works.map((work, index) => worksLayout({ work, index }))}
                 </Grid>
 
-                {/* 영업 순서 */}
-                <Box width={'80%'} paddingX={3} sx={{ marginX: 'auto', marginTop: '0px' }} paddingTop={10} paddingBottom={20}>
-                    <h1 style={{ fontSize: 35, marginBottom: '20px', marginTop: '0px', color: '#757575' }}>
-                        <span style={{ color: 'rgb(81, 97, 181)' }}>AdPlus</span>의 광고는<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        이 순서대로 <span style={{ color: 'rgb(81, 97, 181)' }}>진행</span>됩니다.</h1>
+                <Box width={'100%'} paddingX={{ xs: 3, md: 30 }} bgcolor={'#eff1f9'} paddingTop={10} paddingY={{ xs: 10, md: 20 }}>
+                    <Box width={'100%'} margin={'auto'} maxWidth={2000} >
+                        <Typography variant='h1' style={{ fontSize: 40, marginBottom: '20px', marginTop: '0px', color: '#757575' }}>
+                            <span style={{ color: '#5161b5' }}>AdPlus</span>의 광고는<br />
+                            이 순서대로<br /> <span style={{ color: '#5161b5' }}>진행</span>됩니다.
+                        </Typography>
 
-                    <hr style={{ border: '2px solid rgb(81, 97, 181)', width: 300, margin: 0, marginBottom: '20px' }} />
-
-                    <Grid container spacing={3} paddingX={2} alignContent={'center'} sx={{ marginTop: '30px' }}>
-                        { adArray.map((value, index) => {
-                            return (
-                                <Grid item xs={12} sm={6} md={2} key={index} margin={'auto'}>
-                                    <CircleLayout value={value} index={index} />
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
+                        <hr style={{ border: '2px solid #5161b5', width: 300, margin: 0, marginBottom: '20px' }} />
+                        <Transition timeout={500} in={true} nodeRef={nodeRef}>
+                            <Grid container ref={nodeRef} spacing={3} paddingX={2} alignContent={'center'} sx={{ marginTop: '30px' }} maxWidth={1400} margin={'auto'}>
+                                {adArray.map((value, index) => {
+                                    return (
+                                        <Grid item xs={12} sm={6} md={2} key={index} margin={'auto'} style={{ opacity: isInViewport ? 1 : 0, transition: 'opacity 0.5s' }}>
+                                            <CircleLayout value={value} index={index} />
+                                        </Grid>
+                                    )
+                                })}
+                            </Grid>
+                        </Transition>
+                    </Box>
                 </Box>
 
-
-                <Box width={'100%'}  >
-                    <Box width={'100%'} height={{ xs: 1200, md: 700 }} sx={{
+                <Box width={'100%'} >
+                    <Box width={'100%'} height={'auto'} sx={{
                         backgroundImage: `url('${SecondSectionImg}')`,
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: 'cover',
@@ -240,60 +268,70 @@ function MainPage() {
                         <Box
                             bgcolor={'rgba(0, 0, 0, 0.7)'}
                             width={'100%'}
-                            height={{ xs: 1200, md: 700 }}
+                            height={'auto'}
                             zIndex={2}
                         >
-                            <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: 40, marginBottom: '20px', paddingTop: 10 }} textAlign={'center'} variant='h1' marginY={5} >
-                                디자인 하는 광고 회사
-                            </Typography>
-                            <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: 18, marginBottom: '50px' }} textAlign={'center'} marginBottom={5} >
-                                전단지, 명함, 브랜드 웹툰, 모션그래픽, 홈페이지까지<br />
-                                광고뿐만 아니라 브랜드를 위한 다양한 콘텐츠 제작을 지원합니다.
-                            </Typography>
+                            <Box maxWidth={2000} margin={'auto'} paddingY={10}>
+                                <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: 40, marginBottom: '20px' }} textAlign={'center'} variant='h1' >
+                                    디자인 하는 광고 회사
+                                </Typography>
+                                <hr style={{ border: '2px solid #e5e5e5', width: 250, margin: 'auto', marginBottom: '20px' }} />
+                                <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: 20, marginBottom: '50px' }} textAlign={'center'} paddingX={{ xs: 3, md: 10 }} >
+                                    전단지, 명함, 브랜드 웹툰, 모션그래픽, 홈페이지까지<br />
+                                    광고뿐만 아니라 브랜드를 위한 다양한 콘텐츠 제작을 지원합니다.
+                                </Typography>
 
-                            <Grid container spacing={2} width={'100%'} paddingX={{ xs: 3, md: 30 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                {cards.map((card, index) => CardLayout({ card, index }))}
-                            </Grid>
+                                <Grid container spacing={1} width={'100%'} marginBottom={5} paddingX={{ xs: 3, md: 30 }} sx={{
+                                    display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto'
+                                }}>
+
+                                    {cards.map((card, index) => CardLayout({ card, index }))}
+                                </Grid>
+                            </Box>
+
                         </Box>
                     </Box>
                 </Box>
 
-                <Box width={'100%'} paddingTop={5} paddingBottom={{ lg: 15, xs: 5 }} paddingX={{ xs: 3, md: 30 }} sx={{ bgcolor: '#141c4d' }} >
-                    <Typography sx={{ fontFamily: 'KboGothic_B !important', color: '#e5e5e5', fontSize: 40, marginBottom: '20px' }} variant='h1' marginY={5} >
-                        협력업체 소개
-                    </Typography>
-                    <hr style={{ border: '2px solid #e5e5e5', width: 250, margin: 0, marginBottom: '20px' }} />
-                    <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: 20, marginBottom: '20px' }} marginBottom={5} >
-                        AD Plus 와 함께하는 업체들을 소개합니다.
-                    </Typography>
+                <Box width={'100%'} paddingTop={5} paddingBottom={{ lg: 15, xs: 5 }} sx={{ bgcolor: '#eff1f9' }} >
+                    <Box margin={'auto'} width={'100%'} maxWidth={2000} paddingX={{ xs: 3, md: 30 }}>
+                        <Typography sx={{ fontFamily: 'KboGothic_B !important', color: '#5161b5', fontSize: 40, marginBottom: '20px' }} variant='h1' marginY={5} >
+                            협력업체 소개
+                        </Typography>
+                        <hr style={{ border: '2px solid #5161b5', width: 250, margin: 0, marginBottom: '20px' }} />
+                        <Typography sx={{ fontFamily: 'KboGothic_M', color: '#757575', fontSize: 20, marginBottom: '20px' }} marginBottom={5} >
+                            AD Plus 와 함께하는 업체들을 소개합니다.
+                        </Typography>
 
-                    <Box width={'100%'} height={350} sx={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Carousel
-                            responsive={responsive}
-                            autoPlay={true}
-                            swipeable={true}
-                            draggable={true}
-                            showDots={false}
-                            infinite={true}
-                            partialVisible={false}
-                            dotListClass="custom-dot-list-style"
-                        >
-                            {sliderImageUrl.map((imageUrl, index) => {
-                                return (
-                                    <div className="slider" key={index}>
-                                        <img src={imageUrl.url} alt="movie" />
-                                    </div>
-                                );
-                            })}
-                        </Carousel>
+                        <Box width={'100%'} height={'auto'} sx={{ justifyContent: 'center', alignItems: 'center' }} maxWidth={1500} margin={'auto'}>
+                            <Carousel
+                                responsive={responsive}
+                                autoPlay={true}
+                                swipeable={true}
+                                draggable={true}
+                                showDots={false}
+                                infinite={true}
+                                partialVisible={false}
+                                dotListClass="custom-dot-list-style"
+                            >
+                                {sliderImageUrl.map((imageUrl, index) => {
+                                    return (
+                                        <div className="slider" key={index}>
+                                            <img src={imageUrl.url} alt="movie" />
+                                        </div>
+                                    );
+                                })}
+                            </Carousel>
+                        </Box>
                     </Box>
+
                 </Box>
 
                 <Box width={'100%'}>
                     <Contacts />
                 </Box>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
 
