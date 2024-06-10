@@ -22,7 +22,7 @@ export default function SuccessList() {
 
     return (
         <BasicLayout title={'SUCCESS EXAMPLE'} subTitle={'성공 사례'}>
-            <Box paddingX={{ xs: 3, md: 20 }} paddingY={10}>
+            <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
                 <Typography variant='h1' textAlign='center' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 30, md: 30 }, marginBottom: '10px' }}>
                     플레이스 성공사례
                 </Typography>

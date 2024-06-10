@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import FirstSectionImg from '../assets/img/main_1.png';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-function Contact() {
+function Contact(props) {
+
+  const navigate = useNavigate();
 
     return (
         <Grid container paddingY={10} paddingX={{ xs: 3, md: 30 }} maxWidth={2000} margin={'auto'}>
@@ -18,7 +21,7 @@ function Contact() {
                 오로지 해당 시트를 통해 문의주신 분들에 한에서만 회신 드리고 있습니다.<br />
                 그러니 진심으로 저희와 함께 하고자 하는 분이라면, 꼼꼼하게 작성 부탁드립니다.
               </Typography>
-              <Button variant="contained" sx={{ backgroundColor: '#3e53bd', marginTop: '20px', fontFamily: 'KboGothic_M' }} >문의하러가기 &nbsp;&nbsp;<ArrowForwardIcon /></Button>
+              <Button variant="contained" sx={{ backgroundColor: '#3e53bd', marginTop: '20px', fontFamily: 'KboGothic_M' }} onClick={() => { navigate('/contact') }} >문의하러가기 &nbsp;&nbsp;<ArrowForwardIcon /></Button>
             </Box>
           </Grid>
           <Grid item xs={12} md={6} lg={6} padding={3}>

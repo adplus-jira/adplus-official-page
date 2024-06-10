@@ -18,7 +18,7 @@ export default function QnA() {
 
     return (
         <BasicLayout title={'Q&A'} subTitle={'자주 묻는 질문'}>
-            <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} >
+            <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'} >
                 <Typography sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 40, md: 40 }, marginBottom: '10px' }} variant="h1" textAlign={'center'}>
                     자주 묻는 질문
                 </Typography>

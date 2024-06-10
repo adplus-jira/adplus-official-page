@@ -14,6 +14,16 @@
     src: url('../font/Gothic_light.ttf') format('truetype');
 }
 
+.showBox {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.closeBox {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
 body {
     font-family: 'KboGothic_M' !important;
     color: #333333;

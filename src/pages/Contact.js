@@ -37,7 +37,7 @@ export default function Contact() {
                                 <TextField label="문의제목" fullWidth margin="normal" required />
                                 <TextField label="문의내용" fullWidth margin="normal" multiline rows={4} required />
                                 <Box textAlign={'right'}>
-                                    <Button variant="contained" color="primary" type="submit" textAlign={'center'} sx={{ width: '100%' }}>문의하기</Button>
+                                    <Button variant="contained" color="primary" type="submit" sx={{ width: '100%' }}>문의하기</Button>
                                 </Box>
 
                             </form>

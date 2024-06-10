@@ -8,6 +8,7 @@ import SecondSectionImg from '../assets/img/main_2.jpg';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Transition } from 'react-transition-group';
+import { useNavigate } from 'react-router-dom';
 
 const CircleLayout = ({ value, index }) => {
     return (
@@ -43,7 +44,10 @@ const CircleLayout = ({ value, index }) => {
     );
 }
 
-function worksLayout({ work, index }) {
+function worksLayout({ work, index, navigate }) {
+    
+    
+
     return (
         <Grid item xs={12} md={3} lg={3} key={index} >
             <Box width={'100%'} height={{ xs: 400, md: 500 }} sx={{
@@ -58,7 +62,7 @@ function worksLayout({ work, index }) {
                     '&:hover': {
                         backgroundColor: 'rgba(0, 0, 0, 0.3)'
                     }
-                }}>
+                }} onClick={() => { navigate('/work', { state: { key: index } }) }} >
                 </Box>
             </Box>
         </Grid>
@@ -91,6 +95,8 @@ function CardLayout({ card, index }) {
 }
 
 function MainPage() {
+
+    const navigate = useNavigate();
     const adArray = ["전화 또는 방문상담", "광고 매체 선정", "광고 서비스 제안", "일정 및 예산 확정", "광고 집행", "월별 성과보고"];
 
     const responsive = {
@@ -173,7 +179,7 @@ function MainPage() {
             });
         };
         
-        const options = { root: null, rootMargin: '0px', threshold: 0.7 };
+        const options = { root: null, rootMargin: '0px', threshold: 0.3 };
 
         const observer = new IntersectionObserver(callback, options);
         observer.observe(nodeRef.current);
@@ -181,7 +187,7 @@ function MainPage() {
         return () => {
             observer.disconnect();
         }
-    }, [])
+    }, []);
 
     return (
         <div>
@@ -189,7 +195,7 @@ function MainPage() {
                 <Box sx={{
                     backgroundImage: `url(${Banner})`,
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: '100%',
+                    backgroundSize: 'cover',
                     width: '100%',
                     height: '100vh'
                 }}>
@@ -233,7 +239,7 @@ function MainPage() {
                 </Grid>
                 {/* 광고 작업 */}
                 <Grid container spacing={0} paddingTop={3} maxWidth={2000} margin={'auto'}>
-                    {works.map((work, index) => worksLayout({ work, index }))}
+                    {works.map((work, index) => worksLayout({ work, index, navigate }))}
                 </Grid>
 
                 <Box width={'100%'} paddingX={{ xs: 3, md: 30 }} bgcolor={'#eff1f9'} paddingTop={10} paddingY={{ xs: 10, md: 20 }}>
@@ -248,7 +254,7 @@ function MainPage() {
                             <Grid container ref={nodeRef} spacing={3} paddingX={2} alignContent={'center'} sx={{ marginTop: '30px' }} maxWidth={1400} margin={'auto'}>
                                 {adArray.map((value, index) => {
                                     return (
-                                        <Grid item xs={12} sm={6} md={2} key={index} margin={'auto'} style={{ opacity: isInViewport ? 1 : 0, transition: 'opacity 0.5s' }}>
+                                        <Grid item xs={12} sm={6} md={2} key={index} margin={'auto'} style={{ opacity: isInViewport ? 1 : 0, transition: `all ${index/2+1}s`, transform: `translateY(${isInViewport ? '0' : '100px'})` }}>
                                             <CircleLayout value={value} index={index} />
                                         </Grid>
                                     )
