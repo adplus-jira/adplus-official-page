@@ -16,6 +16,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Logo from '../assets/img/logo.png';
 import { useNavigate } from 'react-router-dom';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+
 
 const menuItems = [
     { text: '회사소개', value: '/intro' },
@@ -40,6 +42,36 @@ function DrawerAppBar(props) {
         setScroll(scrollTop);
     }
 
+    const handleScrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const ScrollToTopButton = () => {
+        return (
+            <IconButton
+                aria-label="scroll to top"
+                onClick={handleScrollToTop}
+                sx={{
+                    width: 50, height: 50,
+                    position: 'fixed',
+                    bottom: '50px',
+                    right: '50px', zIndex: 9999, 
+                    borderRadius: '50%', 
+                    backgroundColor: 'rgb(27 36 80 / 70%)', 
+                    padding: '10px', 
+                    transition: 'all 1s', 
+                    opacity: scroll > 100 ? 1 : 0, 
+                    display: scroll > 100 ? 'block' : 'none', 
+                    color: '#fff',
+                    '&:hover': {
+                        backgroundColor: '#3e53bd'
+                    }
+                }}
+            >
+                <KeyboardDoubleArrowUpIcon />
+            </IconButton>
+        );
+    };
 
 
 
@@ -58,7 +90,9 @@ function DrawerAppBar(props) {
                 {menuItems.map((item) => (
                     <ListItem key={item.value} disablePadding>
                         <ListItemButton sx={{ textAlign: 'center' }} onClick={() => navigation(`${item.value}`)}>
-                            <ListItemText disableTypography primary={item.text} sx={{ color: '#333', fontFamily: 'KboGothic_M' }} />
+                            <ListItemText >
+                                <Typography variant={'h2'} color={'#333'} fontSize={18}>{item.text}</Typography>
+                            </ListItemText>
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -72,9 +106,11 @@ function DrawerAppBar(props) {
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar component="nav" sx={{ bgcolor: scroll ? '#1b2450' : 'transparent', transition: 'all .5s ease', borderBottom: '1px solid #e5e5e5' }} position='fixed' >
-                <Toolbar sx={{ width: '100%', xs: {
-                    paddingX: '0px'
-                }, md: { paddingX: '100px !important' } }}>
+                <Toolbar sx={{
+                    width: '100%', xs: {
+                        paddingX: '0px'
+                    }, md: { paddingX: '100px !important' }
+                }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -97,7 +133,7 @@ function DrawerAppBar(props) {
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {menuItems.map((item) => (
-                            <Button key={item.value} sx={{ color: '#fff', fontFamily: 'KboGothic_M', fontSize: 20, mr: 4 }} onClick={() => navigation(`${item.value}`)}>
+                            <Button key={item.value} sx={{ color: '#e2e2e2', fontFamily: 'KboGothic_M', fontSize: 19, mr: 4 }} onClick={() => navigation(`${item.value}`)}>
                                 {item.text}
                             </Button>
                         ))}
@@ -122,6 +158,7 @@ function DrawerAppBar(props) {
                     {drawer}
                 </Drawer>
             </nav>
+            <ScrollToTopButton />
         </Box>
     );
 }

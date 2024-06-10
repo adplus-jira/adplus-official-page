@@ -9,6 +9,11 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Transition } from 'react-transition-group';
 import { useNavigate } from 'react-router-dom';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
+import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
+import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
+
 
 const CircleLayout = ({ value, index }) => {
     return (
@@ -20,24 +25,24 @@ const CircleLayout = ({ value, index }) => {
                 textAlign={'center'}
                 textOverflow={'break-word'}
                 sx={{
-                    border: '4px solid #838fd3',
+                    border: '1px solid #838fd3',
                     borderRadius: '50%',
-                    backgroundColor: '#f6f8ff',
+                    backgroundColor: 'rgb(78 98 171 / 70%)',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     fontFamily: 'KboGothic_M',
-                    color: '#3e53bd',
+                    color: '#e3e3e3',
                     margin: 'auto',
                     marginBottom: '10px',
                     position: 'relative',
                     '&:hover': {
-                        backgroundColor: '#3e53bd',
-                        color: 'white'
+                        backgroundColor: '#6471b5',
+                        color: '#e3e3e3'
                     }
                 }}
             >
-                <Typography variant='p' fontSize={{ xs: 18, md: 23 }} fontWeight={'bold'}>{value}</Typography>
+                <Typography variant='p' fontSize={{ xs: 18, md: 23 }}>{value}</Typography>
             </Box>
 
         </div>
@@ -45,15 +50,15 @@ const CircleLayout = ({ value, index }) => {
 }
 
 function worksLayout({ work, index, navigate }) {
-    
-    
+
+
 
     return (
         <Grid item xs={12} md={3} lg={3} key={index} >
             <Box width={'100%'} height={{ xs: 400, md: 500 }} sx={{
                 backgroundImage: `url('${work.url}')`,
                 backgroundRepeat: 'no-repeat',
-                backgroundSize: '100%',
+                backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}>
                 <Box width={'100%'} height={'100%'} sx={{
@@ -92,6 +97,30 @@ function CardLayout({ card, index }) {
         </Grid>
 
     );
+}
+
+function easeOutExpo(t) {
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t)
+}
+
+function useCountNum(end, start = 0, duration = 2000) {
+    const [count, setCount] = React.useState(start)
+    const frameRate = 1000 / 60
+    const totalFrame = Math.round(duration / frameRate)
+
+    useEffect(() => {
+        let currentNumber = start
+        const counter = setInterval(() => {
+            const progress = easeOutExpo(++currentNumber / totalFrame)
+            setCount(Math.round(end * progress))
+
+            if (progress === 1) {
+                clearInterval(counter)
+            }
+        }, frameRate)
+    }, [end, frameRate, start, totalFrame])
+
+    return count
 }
 
 function MainPage() {
@@ -164,25 +193,42 @@ function MainPage() {
     ];
 
     const nodeRef = React.useRef(null);
+    const introRef = React.useRef(null);
+    const helperRef = React.useRef(null);
+
+    const firstNode = React.useRef(null);
     const [isInViewport, setIsInViewport] = React.useState(false);
-    
+    const [isInViewport2, setIsInViewport2] = React.useState(false);
+    const [isInViewport3, setIsInViewport3] = React.useState(false);
+
     useEffect(() => {
         if (!nodeRef.current) return;
 
         const callback = (entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setIsInViewport(true);
-                } else {
-                    setIsInViewport(false);
+                switch (entry.target.id) {
+                    case 'orderList':
+                        entry.isIntersecting && setIsInViewport(true);
+                        break;
+                    case 'introduce':
+                        entry.isIntersecting && setIsInViewport2(true);
+                        break;
+                    case 'helper':
+                        entry.isIntersecting && setIsInViewport3(true);
+                        break;
+                    default:
+                        break;
                 }
             });
         };
-        
+
         const options = { root: null, rootMargin: '0px', threshold: 0.3 };
 
         const observer = new IntersectionObserver(callback, options);
         observer.observe(nodeRef.current);
+        observer.observe(introRef.current);
+        observer.observe(helperRef.current);
+
 
         return () => {
             observer.disconnect();
@@ -200,26 +246,63 @@ function MainPage() {
                     height: '100vh'
                 }}>
                     <Box
-                        bgcolor={'rgba(0, 0, 0, 0.7)'}
+                        bgcolor={'rgba(0, 0, 0, 0.8)'}
                         position={'absolute'}
                         top={0}
                         left={0}
                         width={'100%'}
                         height={'100%'}
                     >
-                        <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: { md: 60, xs: 30 }, marginBottom: '20px', paddingTop: 30 }} textAlign={'center'} variant='h1' marginY={5} >
-                            당신의 마케팅 성공 파트너, <br />
-                            <hr style={{ border: '2px solid #e5e5e5', width: '50%', margin: 'auto', marginTop: '20px', marginBottom: 20 }} />
-                            AD PLUS
+                        <Typography sx={{ color: '#e3e3e3', fontSize: { md: 50, xs: 26 }, marginBottom: '20px', paddingTop: { md: 30, xs: 10 }, paddingX: { md: 1, xs: 3 } }} textAlign={'center'} variant='h2' marginY={5} >
+                            클라이언트의 마케팅 성공 파트너, <br />
+                            애드플러스와 함께 매출을 플러스 해보세요.
                         </Typography>
+                        <Grid container spacing={2} paddingTop={{ md: 10, xs: 5 }} width={'100%'} maxWidth={1200} margin={'auto'} >
+                            <Grid item xs={12} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <PaidOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
+                                </Box>
+                                <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >거래 건수</Typography>
+                                <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(8759)}건</Typography>
+                            </Grid>
+                            <Grid item xs={12} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <AccountBoxOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
+                                </Box>
+                                <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >자영업 기업 전문직</Typography>
+                                <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(2632)}개사</Typography>
+                            </Grid>
+                            <Grid item xs={12} md={4} textAlign={'center'}>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <BusinessOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
+                                </Box>
+                                <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >월 평균 문의</Typography>
+                                <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(310)}건</Typography>
+                            </Grid>
 
+                        </Grid>
+                        <Box textAlign={'center'} paddingTop={{ md: 20, xs: 10 }} >
+                            <KeyboardArrowDownIcon sx={{ color: '#e5e5e5', fontSize: 60, animation: 'blink 1.5s infinite', cursor: 'pointer' }} onClick={() => window.scrollTo({ top: firstNode.current.offsetTop, behavior: 'smooth' })} />
+                            <style>
+                                {`
+                                @keyframes blink {
+                                    0% { opacity: 1; }
+                                    50% { opacity: 0; }
+                                    100% { opacity: 1; }
+                                }
+                                `}
+                            </style>
+                        </Box>
                     </Box>
                 </Box>
-                <Grid container paddingY={10} paddingX={{ xs: 3, md: 30 }} maxWidth={2000} margin={'auto'}>
+                <Grid container paddingY={10} paddingX={{ xs: 3, md: 30 }} maxWidth={2000} margin={'auto'} ref={firstNode}>
                     <Grid item xs={12} md={6} lg={6} paddingX={{ xs: 1, md: 5 }} >
                         <Box width={'100%'} paddingTop={10} sx={{ fontSize: 21 }}>
-                            <h1><span style={{ color: '#5161b5' }}>재계약률</span>을 보고<br />마케팅사를 고르세요</h1>
-                            <Typography sx={{ fontFamily: 'KboGothic_L', fontSize: { sm: 12, md: 22 }, color: '#757575' }}>
+                            <Typography fontSize={40} variant='h1'>
+                                <span style={{ color: '#5161b5' }}>재계약률</span>을 보고<br />
+                                마케팅사를 고르세요</Typography>
+                            <br />
+                            <Typography sx={{ fontFamily: 'KboGothic_L', fontSize: { sm: 12, md: 20 }, color: '#757575' }}>
                                 실력있는 법률마케팅사를 고르는 1가지 기준이 있다면, 바로 재계약률입니다.<br />
                                 얼마나 오랜기간, 얼마나 많은 작업을 했는지도 물론 중요하지만, 그것보다<br />
                                 재계약률이 그 실력에 대해 가늠할 수 있는 최적의 기준입니다.
@@ -242,19 +325,19 @@ function MainPage() {
                     {works.map((work, index) => worksLayout({ work, index, navigate }))}
                 </Grid>
 
-                <Box width={'100%'} paddingX={{ xs: 3, md: 30 }} bgcolor={'#eff1f9'} paddingTop={10} paddingY={{ xs: 10, md: 20 }}>
-                    <Box width={'100%'} margin={'auto'} maxWidth={2000} >
-                        <Typography variant='h1' style={{ fontSize: 40, marginBottom: '20px', marginTop: '0px', color: '#757575' }}>
-                            <span style={{ color: '#5161b5' }}>AdPlus</span>의 광고는<br />
-                            이 순서대로<br /> <span style={{ color: '#5161b5' }}>진행</span>됩니다.
+                <Box width={'100%'} bgcolor={'rgb(23 33 73 / 80%)'} paddingTop={10} paddingY={{ xs: 10, md: 20 }}>
+                    <Box width={'100%'} paddingX={{ xs: 3, md: 30 }} margin={'auto'} maxWidth={2000} >
+                        <Typography variant='h1' style={{ marginBottom: '20px', marginTop: '0px', color: '#e3e3e3' }} fontSize={{ xs: 30, md: 40 }}>
+                            <span style={{ color: '#6471b5' }}>AD PLUS</span>의 광고는<br />
+                            이 순서대로 <span style={{ color: '#6471b5' }}>진행</span>됩니다.
                         </Typography>
 
                         <hr style={{ border: '2px solid #5161b5', width: 300, margin: 0, marginBottom: '20px' }} />
-                        <Transition timeout={500} in={true} nodeRef={nodeRef}>
+                        <Transition timeout={500} in={true} nodeRef={nodeRef} id="orderList">
                             <Grid container ref={nodeRef} spacing={3} paddingX={2} alignContent={'center'} sx={{ marginTop: '30px' }} maxWidth={1400} margin={'auto'}>
                                 {adArray.map((value, index) => {
                                     return (
-                                        <Grid item xs={12} sm={6} md={2} key={index} margin={'auto'} style={{ opacity: isInViewport ? 1 : 0, transition: `all ${index/2+1}s`, transform: `translateY(${isInViewport ? '0' : '100px'})` }}>
+                                        <Grid item xs={12} sm={6} md={2} key={index} margin={'auto'} style={{ opacity: isInViewport ? 1 : 0, transition: `all 1s`, transitionDelay: `${index / 4}s`, transform: `translateY(${isInViewport ? '0' : '100px'})` }}>
                                             <CircleLayout value={value} index={index} />
                                         </Grid>
                                     )
@@ -277,12 +360,12 @@ function MainPage() {
                             height={'auto'}
                             zIndex={2}
                         >
-                            <Box maxWidth={2000} margin={'auto'} paddingY={10}>
-                                <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: 40, marginBottom: '20px' }} textAlign={'center'} variant='h1' >
+                            <Box maxWidth={2000} ref={introRef} margin={'auto'} paddingY={10} id="introduce" sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '100px'})` }}>
+                                <Typography sx={{ color: '#e5e5e5', fontSize: 40, marginBottom: '20px' }} textAlign={'center'} variant='h2'>
                                     디자인 하는 광고 회사
                                 </Typography>
-                                <hr style={{ border: '2px solid #e5e5e5', width: 250, margin: 'auto', marginBottom: '20px' }} />
-                                <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: 20, marginBottom: '50px' }} textAlign={'center'} paddingX={{ xs: 3, md: 10 }} >
+                                <hr style={{ border: '1px solid #e5e5e5', width: 250, margin: 'auto', marginBottom: '20px' }} />
+                                <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: { md: 20, xs: 15 }, marginBottom: '50px' }} textAlign={'center'} paddingX={{ xs: 3, md: 10 }} >
                                     전단지, 명함, 브랜드 웹툰, 모션그래픽, 홈페이지까지<br />
                                     광고뿐만 아니라 브랜드를 위한 다양한 콘텐츠 제작을 지원합니다.
                                 </Typography>
@@ -301,15 +384,15 @@ function MainPage() {
 
                 <Box width={'100%'} paddingTop={5} paddingBottom={{ lg: 15, xs: 5 }} sx={{ bgcolor: '#eff1f9' }} >
                     <Box margin={'auto'} width={'100%'} maxWidth={2000} paddingX={{ xs: 3, md: 30 }}>
-                        <Typography sx={{ fontFamily: 'KboGothic_B !important', color: '#5161b5', fontSize: 40, marginBottom: '20px' }} variant='h1' marginY={5} >
+                        <Typography sx={{ color: '#5161b5', fontSize: { xs: 30, md: 40 }, marginBottom: '10px' }} variant='h1' marginY={5} >
                             협력업체 소개
                         </Typography>
-                        <hr style={{ border: '2px solid #5161b5', width: 250, margin: 0, marginBottom: '20px' }} />
-                        <Typography sx={{ fontFamily: 'KboGothic_M', color: '#757575', fontSize: 20, marginBottom: '20px' }} marginBottom={5} >
+                        <hr style={{ border: '1px solid #5161b5', width: 250, margin: 0, marginBottom: '10px' }} />
+                        <Typography sx={{ color: '#757575', fontSize: { md: 20, xs: 15 }, marginBottom: '20px' }} variant='p' marginBottom={5} >
                             AD Plus 와 함께하는 업체들을 소개합니다.
                         </Typography>
 
-                        <Box width={'100%'} height={'auto'} sx={{ justifyContent: 'center', alignItems: 'center' }} maxWidth={1500} margin={'auto'}>
+                        <Box id="helper" ref={helperRef} width={'100%'} height={'auto'} sx={{ justifyContent: 'center', alignItems: 'center', opacity: isInViewport3 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport3 ? '0' : '100px'})` }} maxWidth={1500} margin={'auto'}>
                             <Carousel
                                 responsive={responsive}
                                 autoPlay={true}

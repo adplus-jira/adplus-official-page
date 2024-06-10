@@ -23,7 +23,7 @@ export default function BasicLayout({ title, subTitle, children }) {
                     height={'70vh'}
                 >
 
-                    <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: { md: 50, xs: 25 }, marginBottom: '20px', paddingTop: 30 }} textAlign={'center'} variant='h1' marginY={5} >
+                    <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: { md: 50, xs: 40 }, marginBottom: '20px', paddingTop: 30 }} textAlign={'center'} variant='h1' marginY={5} >
                         <Typography sx={{ fontFamily: 'KboGothic_B', color: '#c7c7c7', fontSize: { md: 20, xs: 20 }, margin: 0 }} textAlign={'center'} variant='p' >
                             {subTitle}<br />
                         </Typography>

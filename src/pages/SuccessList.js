@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BasicLayout from '../components/BasicLayout';
 import { Box, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
@@ -20,6 +20,10 @@ export default function SuccessList() {
     ];
     const [imgIdx, setImgIdx] = useState(0);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    
     return (
         <BasicLayout title={'SUCCESS EXAMPLE'} subTitle={'성공 사례'}>
             <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>

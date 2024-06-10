@@ -1,17 +1,22 @@
 @font-face {
     font-family: 'KboGothic_B';
-    src: url('../font/Gothic_bold.ttf') format('truetype');
+    src: url('../font/Pretendard-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'KboGothic_BB';
+    src: url('../font/Pretendard-ExtraBold.woff') format('woff');
 }
 
 @font-face {
     font-family: 'KboGothic_M';
     font-weight: 400;
-    src: url('../font/Gothic_medium_1.ttf') format('truetype');
+    src: url('../font/Pretendard-Medium.woff') format('woff');
 }
 
 @font-face {
     font-family: 'KboGothic_L';
-    src: url('../font/Gothic_light.ttf') format('truetype');
+    src: url('../font/Pretendard-Light.woff') format('woff');
 }
 
 .showBox {
@@ -34,9 +39,14 @@ p {
     font-family: 'KboGothic_M' !important;
 }
 
-h1, h2 {
-    font-family: 'KboGothic_B' !important;
+h1 {
+    font-family: 'KboGothic_BB' !important;
     color: #333333
+}
+
+h2 {
+    font-family: 'KboGothic_B' !important;
+    color: #333333;
 }
 
 .slider {

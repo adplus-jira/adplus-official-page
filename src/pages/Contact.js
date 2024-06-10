@@ -1,15 +1,17 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import BasicLayout from '../components/BasicLayout';
 import { Grid } from '@mui/material';
 import TestImg from '../assets/img/main_1.png';
 import { TextField, Button } from '@mui/material';
 
 export default function Contact() {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <BasicLayout title={'Contact Us'} subTitle={'문의하기'}>
-            <Box paddingX={{ xs: 3, md: 40 }} paddingY={10}>
+            <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
                         <Box textAlign={'left'}>
@@ -27,7 +29,7 @@ export default function Contact() {
                     <Grid item xs={12} md={6} >
                         <Box textAlign={'left'} boxShadow={2} width={'100%'} height={'100%'} paddingX={5} paddingY={5}>
                             <Box textAlign={'center'} marginTop={3} >
-                                <Typography variant='h2' fontSize={30} color={'#5161b5'} marginTop={3} marginBottom={4} alignContent={'center'}>제안서</Typography>
+                                <Typography variant='h1' fontSize={35} color={'#5161b5'} marginTop={3} marginBottom={4} alignContent={'center'}>제안서</Typography>
                             </Box>
 
                             <form>
@@ -37,7 +39,7 @@ export default function Contact() {
                                 <TextField label="문의제목" fullWidth margin="normal" required />
                                 <TextField label="문의내용" fullWidth margin="normal" multiline rows={4} required />
                                 <Box textAlign={'right'}>
-                                    <Button variant="contained" color="primary" type="submit" sx={{ width: '100%' }}>문의하기</Button>
+                                    <Button variant="contained" color="primary" type="submit" sx={{ width: '100%', fontFamily: 'KboGothic_M', backgroundColor: '#3e53bd' }}>문의하기</Button>
                                 </Box>
 
                             </form>

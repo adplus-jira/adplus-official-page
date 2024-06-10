@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BasicLayout from '../components/BasicLayout';
 import Contacts from '../components/Contacts';
 import { Box, Grid, Typography } from '@mui/material';
@@ -6,6 +6,9 @@ import { Box, Grid, Typography } from '@mui/material';
 export default function QnA() {
 
     const [showAnswer, setShowAnswer] = React.useState([false, false, false, false]);
+    const [isInViewport, setIsInViewport] = React.useState(false);
+
+    const firstNode = React.useRef(null);
 
     const handleGridClick = (idx) => {
         const arr = [];
@@ -16,6 +19,34 @@ export default function QnA() {
         setShowAnswer(arr);
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+        const callback = (entries) => {
+            entries.forEach(entry => {
+                switch (entry.target.id) {
+                    case 'firstNode':
+                        entry.isIntersecting && setIsInViewport(true);
+                        break;
+                    default:
+                        break;
+                }
+            });
+        };
+
+
+        const options = { root: null, rootMargin: '0px', threshold: 0.3 };
+
+        const observer = new IntersectionObserver(callback, options);
+        observer.observe(firstNode.current);
+
+        return () => {
+            observer.disconnect();
+        }
+
+
+    }, []);
+
     return (
         <BasicLayout title={'Q&A'} subTitle={'자주 묻는 질문'}>
             <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'} >
@@ -23,7 +54,7 @@ export default function QnA() {
                     자주 묻는 질문
                 </Typography>
                 <hr style={{ border: 'none', borderTop: '4px solid #5161b5', marginBottom: '20px', width: 100 }} />
-                <Box paddingY={5}>
+                <Box paddingY={5} id="firstNode" ref={firstNode} sx={{  }}>
                     <Grid container spacing={1}>
                         <Grid item xs={12} md={12} bgcolor={'#efefef'} height={80} sx={
                             {
@@ -31,7 +62,8 @@ export default function QnA() {
                                 borderTopRightRadius: 20,
                                 borderBottomLeftRadius: showAnswer[0] ? 0 : 20,
                                 borderBottomRightRadius: showAnswer[0] ? 0 : 20,
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                opacity: isInViewport ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport ? '0' : '50px'})`
                             }
                         } display="flex" alignItems="center" onClick={() => handleGridClick(0)}>
                             <Typography variant="h2" fontSize={19} fontWeight={'bold'} display={'inline-block'} width={'100%'} paddingX={5}>
@@ -55,7 +87,8 @@ export default function QnA() {
                                 borderBottomLeftRadius: showAnswer[1] ? 0 : 20,
                                 borderBottomRightRadius: showAnswer[1] ? 0 : 20,
                                 cursor: 'pointer',
-                                marginTop: 1
+                                marginTop: 1,
+                                opacity: isInViewport ? 1 : 0, transition: `all 1s`, transitionDelay: '.5s', transform: `translateY(${isInViewport ? '0' : '50px'})`
                             }
                         } display="flex" alignItems="center" onClick={() => handleGridClick(1)}>
                             <Typography variant="h2" fontSize={19} fontWeight={'bold'} display={'inline-block'} width={'100%'} paddingX={5}>
@@ -78,7 +111,8 @@ export default function QnA() {
                                 borderBottomLeftRadius: showAnswer[2] ? 0 : 20,
                                 borderBottomRightRadius: showAnswer[2] ? 0 : 20,
                                 cursor: 'pointer',
-                                marginTop: 1
+                                marginTop: 1,
+                                opacity: isInViewport ? 1 : 0, transition: `all 1s`, transitionDelay: '1s', transform: `translateY(${isInViewport ? '0' : '50px'})`
                             }
                         } display="flex" alignItems="center" onClick={() => handleGridClick(2)}>
                             <Typography variant="h2" fontSize={19} fontWeight={'bold'} display={'inline-block'} width={'100%'} paddingX={5}>
@@ -101,7 +135,8 @@ export default function QnA() {
                                 borderBottomLeftRadius: showAnswer[3] ? 0 : 20,
                                 borderBottomRightRadius: showAnswer[3] ? 0 : 20,
                                 cursor: 'pointer',
-                                marginTop: 1
+                                marginTop: 1,
+                                opacity: isInViewport ? 1 : 0, transition: `all 1s`, transitionDelay: '1.5s', transform: `translateY(${isInViewport ? '0' : '50px'})`
                             }
                         } display="flex" alignItems="center" onClick={() => handleGridClick(3)}>
                             <Typography variant="h2" fontSize={19} fontWeight={'bold'} display={'inline-block'} width={'100%'} paddingX={5}>

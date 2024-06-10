@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import BasicLayout from '../components/BasicLayout';
 import { Box, Card, Typography } from '@mui/material';
 import { CardContent, CardMedia, Grid } from '@mui/material';
@@ -8,7 +8,7 @@ import Carousel from 'react-material-ui-carousel';
 function WorksLayout({ onClickFunc }) {
 
     return (
-        <Grid item xs={12} sm={6} md={3} sx={{ cursor: 'pointer' }} >
+        <Grid item xs={12} sm={6} md={3} sx={{ cursor: 'pointer' }}>
             <Card onClick={onClickFunc}>
                 <CardMedia
                     component="img"
@@ -36,8 +36,60 @@ export default function Works() {
     const focusThird = useRef(null);
     const focusFourth = useRef(null);
 
+    const firstNode = useRef(null);
+
+    const [isInViewport, setIsInViewport] = React.useState(false);
+    const [isInViewport2, setIsInViewport2] = React.useState(false);
+    const [isInViewport3, setIsInViewport3] = React.useState(false);
+    const [isInViewport4, setIsInViewport4] = React.useState(false);
+    const [isInViewport5, setIsInViewport5] = React.useState(false);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+        const callback = (entries) => {
+            entries.forEach(entry => {
+                switch (entry.target.id) {
+                    case 'firstNode':
+                        entry.isIntersecting && setIsInViewport(true);
+                        break;
+                    case 'secondNode':
+                        entry.isIntersecting && setIsInViewport2(true);
+                        break;
+                    case 'thirdNode':
+                        entry.isIntersecting && setIsInViewport3(true);
+                        break;
+                    case 'fourthNode':
+                        entry.isIntersecting && setIsInViewport4(true);
+                        break;
+                    case 'fifthNode':
+                        entry.isIntersecting && setIsInViewport5(true);
+                        break;
+                    default:
+                        break;
+                }
+            });
+        };
+
+
+        const options = { root: null, rootMargin: '0px', threshold: 0.3 };
+
+        const observer = new IntersectionObserver(callback, options);
+        observer.observe(firstNode.current);
+        observer.observe(focusFirst.current);
+        observer.observe(focusSecond.current);
+        observer.observe(focusThird.current);
+        observer.observe(focusFourth.current);
+
+        return () => {
+            observer.disconnect();
+        }
+
+
+    }, []);
+
     const onMoveToFocus = (ref) => {
-        ref.current.style.scrollMargin = '70px';
+        ref.current.style.scrollMargin = '220px';
 
         if (ref && ref.current) ref.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -45,7 +97,7 @@ export default function Works() {
 
     return (
         <BasicLayout title={"What We Do?"} subTitle={"하는 일"}>
-            <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} >
+            <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} >
                 <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 30, md: 40 }, marginBottom: '10px' }}>
                     아래와 같은<br />
                     <span style={{ fontFamily: 'KboGothic_B !important', color: '#5161b5', fontSize: { xs: 30, md: 40 } }} variant="h1">온라인 마케팅 서비스</span>를<br />
@@ -55,7 +107,9 @@ export default function Works() {
                     업체의 내 외부적인 상황에 따라 이에 다른 품목을 확인할 수 있습니다.
                 </Typography>
             </Box>
-            <Grid container spacing={2} paddingX={{ xs: 3, md: 20 }} paddingY={5} maxWidth={2000} margin={'auto'} marginBottom={5}>
+            <Grid container spacing={2} paddingX={{ xs: 3, md: 30 }} paddingY={5} maxWidth={2000} margin={'auto'} marginBottom={5} ref={firstNode} id="firstNode" sx={{
+                opacity: isInViewport ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport ? '0' : '100px'})`
+            }}>
                 <WorksLayout onClickFunc={() => onMoveToFocus(focusFirst)} />
                 <WorksLayout onClickFunc={() => onMoveToFocus(focusSecond)} />
                 <WorksLayout onClickFunc={() => onMoveToFocus(focusThird)} />
@@ -63,9 +117,9 @@ export default function Works() {
             </Grid>
 
             {/* 블로그 마케팅 */}
-            <Box bgcolor={'#5161b5'} ref={focusFirst} >
-                <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
-                    <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 20, md: 30 }, marginBottom: '10px' }} color={'#fff'} textAlign={'center'}>
+            <Box bgcolor={'#5161b5'}  >
+                <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
+                    <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 25, md: 35 }, marginBottom: '10px' }} color={'#fff'} textAlign={'center'}>
                         블로그 마케팅
                     </Typography>
                     <hr style={{ border: 'none', borderTop: '4px solid #2a3677', marginBottom: '20px', width: 100 }} />
@@ -74,7 +128,9 @@ export default function Works() {
                             구글 검색광고 | 카카오 검색광고 | 네이버 브랜드 검색광고 | 네이버 쇼핑광고 | 네이버 쇼핑브랜드형 광고
                         </Typography>
                     </Box>
-                    <Grid container spacing={2} paddingX={{ xs: 3, md: 3 }} paddingY={5}>
+                    <Grid id="secondNode" ref={focusFirst} container spacing={2} paddingX={{ xs: 3, md: 3 }} paddingY={5} sx={{
+                        opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '100px'})`
+                    }}>
                         <Grid item xs={12} sm={6} md={6} sx={{ cursor: 'pointer' }}>
                             <Carousel showThumbs={false} showStatus={false} infiniteLoop={true}>
                                 <img src={TestImg} alt="test" style={{ width: '100%', height: '500px' }} />
@@ -111,9 +167,9 @@ export default function Works() {
             </Box>
 
             {/* 카페 */}
-            <Box ref={focusSecond}>
-                <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
-                    <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 20, md: 30 }, marginBottom: '10px' }} color={'#333'} textAlign={'center'}>
+            <Box >
+                <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
+                    <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 25, md: 35 }, marginBottom: '10px' }} color={'#333'} textAlign={'center'}>
                         블로그 마케팅
                     </Typography>
                     <hr style={{ border: 'none', borderTop: '4px solid #2a3677', marginBottom: '20px', width: 100 }} />
@@ -122,7 +178,9 @@ export default function Works() {
                             구글 검색광고 | 카카오 검색광고 | 네이버 브랜드 검색광고 | 네이버 쇼핑광고 | 네이버 쇼핑브랜드형 광고
                         </Typography>
                     </Box>
-                    <Grid container spacing={2} paddingX={{ xs: 3, md: 3 }} paddingY={5}>
+                    <Grid container spacing={2} paddingX={{ xs: 3, md: 3 }} paddingY={5} ref={focusSecond} id="thirdNode" sx={{
+                        opacity: isInViewport3 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport3 ? '0' : '100px'})`
+                    }}>
                         <Grid item xs={12} sm={6} md={6}>
                             <Box width={'100%'} bgcolor={'#fff'} padding={5} height={500} borderRadius={6}>
                                 <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 15, md: 22 }, marginBottom: '10px' }} color={'#5161b5'}>
@@ -158,9 +216,9 @@ export default function Works() {
             </Box>
 
             {/* 블로그 마케팅 */}
-            <Box bgcolor={'#5161b5'} ref={focusThird}>
-                <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
-                    <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 20, md: 30 }, marginBottom: '10px' }} color={'#fff'} textAlign={'center'}>
+            <Box bgcolor={'#5161b5'} >
+                <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
+                    <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 25, md: 35 }, marginBottom: '10px' }} color={'#fff'} textAlign={'center'}>
                         블로그 마케팅
                     </Typography>
                     <hr style={{ border: 'none', borderTop: '4px solid #2a3677', marginBottom: '20px', width: 100 }} />
@@ -169,7 +227,9 @@ export default function Works() {
                             구글 검색광고 | 카카오 검색광고 | 네이버 브랜드 검색광고 | 네이버 쇼핑광고 | 네이버 쇼핑브랜드형 광고
                         </Typography>
                     </Box>
-                    <Grid container spacing={2} paddingX={{ xs: 3, md: 3 }} paddingY={5}>
+                    <Grid container spacing={2} paddingX={{ xs: 3, md: 3 }} paddingY={5} ref={focusThird} id="fourthNode" sx={{
+                        opacity: isInViewport4 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport4 ? '0' : '100px'})`
+                    }}>
                         <Grid item xs={12} sm={6} md={6} sx={{ cursor: 'pointer' }}>
                             <Carousel showThumbs={false} showStatus={false} infiniteLoop={true}>
                                 <img src={TestImg} alt="test" style={{ width: '100%', height: '500px' }} />
@@ -205,9 +265,9 @@ export default function Works() {
             </Box>
 
             {/* 카페 */}
-            <Box ref={focusFourth}>
-                <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
-                    <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 20, md: 30 }, marginBottom: '10px' }} color={'#333'} textAlign={'center'}>
+            <Box >
+                <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
+                    <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 25, md: 35 }, marginBottom: '10px' }} color={'#333'} textAlign={'center'}>
                         블로그 마케팅
                     </Typography>
                     <hr style={{ border: 'none', borderTop: '4px solid #2a3677', marginBottom: '20px', width: 100 }} />
@@ -216,7 +276,9 @@ export default function Works() {
                             구글 검색광고 | 카카오 검색광고 | 네이버 브랜드 검색광고 | 네이버 쇼핑광고 | 네이버 쇼핑브랜드형 광고
                         </Typography>
                     </Box>
-                    <Grid container spacing={2} paddingX={{ xs: 3, md: 3 }} paddingY={5}>
+                    <Grid container spacing={2} paddingX={{ xs: 3, md: 3 }} paddingY={5} ref={focusFourth} id="fifthNode" sx={{
+                        opacity: isInViewport5 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport5 ? '0' : '100px'})`
+                    }}>
                         <Grid item xs={12} sm={6} md={6}>
                             <Box width={'100%'} bgcolor={'#fff'} padding={5} height={500} borderRadius={6}>
                                 <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 15, md: 22 }, marginBottom: '10px' }} color={'#5161b5'}>
