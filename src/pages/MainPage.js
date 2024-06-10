@@ -253,26 +253,26 @@ function MainPage() {
                         width={'100%'}
                         height={'100%'}
                     >
-                        <Typography sx={{ color: '#e3e3e3', fontSize: { md: 50, xs: 26 }, marginBottom: '20px', paddingTop: { md: 30, xs: 10 }, paddingX: { md: 1, xs: 3 } }} textAlign={'center'} variant='h2' marginY={5} >
+                        <Typography sx={{ color: '#e3e3e3', fontSize: { md: 50, xs: 27 }, marginBottom: '20px', paddingTop: { md: 30, xs: 30 }, paddingX: { md: 1, xs: 3 } }} textAlign={'center'} variant='h2' marginY={5} >
                             클라이언트의 마케팅 성공 파트너, <br />
                             애드플러스와 함께 매출을 플러스 해보세요.
                         </Typography>
-                        <Grid container spacing={2} paddingTop={{ md: 10, xs: 5 }} width={'100%'} maxWidth={1200} margin={'auto'} >
-                            <Grid item xs={12} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
+                        <Grid container spacing={1} paddingTop={{ md: 10, xs: 5 }} width={'100%'} maxWidth={1200} margin={'auto'} >
+                            <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
                                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
                                     <PaidOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
                                 </Box>
                                 <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >거래 건수</Typography>
                                 <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(8759)}건</Typography>
                             </Grid>
-                            <Grid item xs={12} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
+                            <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
                                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
                                     <AccountBoxOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
                                 </Box>
                                 <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >자영업 기업 전문직</Typography>
                                 <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(2632)}개사</Typography>
                             </Grid>
-                            <Grid item xs={12} md={4} textAlign={'center'}>
+                            <Grid item xs={4} md={4} textAlign={'center'}>
                                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
                                     <BusinessOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
                                 </Box>
@@ -281,7 +281,7 @@ function MainPage() {
                             </Grid>
 
                         </Grid>
-                        <Box textAlign={'center'} paddingTop={{ md: 20, xs: 10 }} >
+                        <Box textAlign={'center'} paddingTop={{ md: 20, xs: 20 }} >
                             <KeyboardArrowDownIcon sx={{ color: '#e5e5e5', fontSize: 60, animation: 'blink 1.5s infinite', cursor: 'pointer' }} onClick={() => window.scrollTo({ top: firstNode.current.offsetTop, behavior: 'smooth' })} />
                             <style>
                                 {`
