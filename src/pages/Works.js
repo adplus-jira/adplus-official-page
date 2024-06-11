@@ -4,11 +4,13 @@ import { Box, Card, Typography } from '@mui/material';
 import { CardContent, CardMedia, Grid } from '@mui/material';
 import TestImg from '../assets/img/main_1.png';
 import Carousel from 'react-material-ui-carousel';
+import Header from '../components/Header';
+import Contacts from '../components/Contacts';
 
 function WorksLayout({ onClickFunc }) {
 
     return (
-        <Grid item xs={12} sm={6} md={3} sx={{ cursor: 'pointer' }}>
+        <Grid item xs={12} sm={6} md={3} padding={1} sx={{ cursor: 'pointer' }}>
             <Card onClick={onClickFunc}>
                 <CardMedia
                     component="img"
@@ -96,6 +98,8 @@ export default function Works() {
 
 
     return (
+        <div>
+        <Header />
         <BasicLayout title={"What We Do?"} subTitle={"하는 일"}>
             <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} >
                 <Typography variant='h1' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 30, md: 40 }, marginBottom: '10px' }}>
@@ -107,7 +111,7 @@ export default function Works() {
                     업체의 내 외부적인 상황에 따라 이에 다른 품목을 확인할 수 있습니다.
                 </Typography>
             </Box>
-            <Grid container spacing={2} paddingX={{ xs: 3, md: 30 }} paddingY={5} maxWidth={2000} margin={'auto'} marginBottom={5} ref={firstNode} id="firstNode" sx={{
+            <Grid container spacing={0} paddingX={{ xs: 3, md: 30 }} paddingY={5} maxWidth={2000} margin={'auto'} marginBottom={5} ref={firstNode} id="firstNode" sx={{
                 opacity: isInViewport ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport ? '0' : '100px'})`
             }}>
                 <WorksLayout onClickFunc={() => onMoveToFocus(focusFirst)} />
@@ -312,7 +316,8 @@ export default function Works() {
                     </Grid>
                 </Box>
             </Box>
-
+            <Contacts />
         </BasicLayout>
+        </div>
     );
 }

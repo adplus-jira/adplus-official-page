@@ -3,14 +3,16 @@ import { useNavigate } from "react-router";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import FirstSectionImg from '../assets/img/main_1.png';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Footer from './Footer';
 
 function Contact(props) {
 
   const navigate = useNavigate();
 
     return (
-        <Grid container paddingY={10} paddingX={{ xs: 3, md: 30 }} maxWidth={2000} margin={'auto'}>
-          <Grid item xs={12} md={6} lg={6}>
+      <div>
+        <Grid container paddingTop={20} paddingX={{ xs: 3, md: 30 }} maxWidth={2000} margin={'auto'} sx={{ paddingBottom: '32px' }}>
+          <Grid item xs={12} md={6} lg={6} >
             <Box width={'100%'} sx={{ fontSize: 23 }}>
               <Typography variant="h1" color={'#5161b5'} fontSize={{ xs: 30, md: 40 }}>문의하기</Typography>
                 <hr style={{ width: '100%', height: '1px', backgroundColor: '#5161b5' }} />
@@ -24,7 +26,7 @@ function Contact(props) {
               <Button variant="contained" sx={{ backgroundColor: '#3e53bd', marginTop: '20px', fontFamily: 'KboGothic_M', display: 'flex' }} onClick={() => { navigate('/contact') }} >문의하러가기 &nbsp;&nbsp;<ArrowForwardIcon /></Button>
             </Box>
           </Grid>
-          <Grid item xs={12} md={6} lg={6} padding={3}>
+          <Grid item xs={12} md={6} lg={6} >
             <Box width={{ xs: 224, md: 526 }} height={{ xs: 216, md: 510 }} sx={{
               backgroundImage: `url(${FirstSectionImg})`,
               backgroundSize: '100%',
@@ -35,6 +37,8 @@ function Contact(props) {
             </Box>
           </Grid>
         </Grid>
+        <Footer />
+      </div>
     );
 }
 

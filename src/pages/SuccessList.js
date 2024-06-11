@@ -4,6 +4,8 @@ import { Box, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
 import 'react-multi-carousel/lib/styles.css';
 import LightBox, { Modal, ModalGateway } from 'react-images';
+import Header from '../components/Header';
+import Contacts from '../components/Contacts';
 
 export default function SuccessList() {
     const [isOpen, setIsOpen] = useState(false);
@@ -23,38 +25,41 @@ export default function SuccessList() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    
+
     return (
-        <BasicLayout title={'SUCCESS EXAMPLE'} subTitle={'성공 사례'}>
-            <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
-                <Typography variant='h1' textAlign='center' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 30, md: 30 }, marginBottom: '10px' }}>
-                    플레이스 성공사례
-                </Typography>
-                <hr style={{ border: 'none', borderTop: '4px solid #5161b5', marginBottom: '20px', width: 100 }} />
-                {
-                    isOpen && (
-                        <ModalGateway>
-                            <Modal src='https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' onClose={() => setIsOpen(false)}>
-                                <LightBox currentIndex={imgIdx} views={images} />
-                            </Modal>
-                        </ModalGateway>
-                    )
-                }
-                <Box paddingY={5}>
-                    <Grid container spacing={1}>
-                        {
-                            images.map((img, idx) => {
-                                return (
-                                    <Grid item md={4}>
-                                        <img src={img.source} alt='test' style={{ width: '100%', cursor: 'pointer' }} onClick={() => { setIsOpen(true); setImgIdx(idx) }} />
-                                    </Grid>
-                                )
-                            })
-                        }
-                    </Grid>
+        <div>
+            <Header />
+
+            <BasicLayout title={'SUCCESS EXAMPLE'} subTitle={'성공 사례'}>
+                <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
+                    <Typography variant='h1' textAlign='center' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 30, md: 30 }, marginBottom: '10px' }}>
+                        플레이스 성공사례
+                    </Typography>
+                    <hr style={{ border: 'none', borderTop: '4px solid #5161b5', marginBottom: '20px', width: 100 }} />
+                    {
+                        isOpen && (
+                            <ModalGateway>
+                                <Modal src='https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' onClose={() => setIsOpen(false)}>
+                                    <LightBox currentIndex={imgIdx} views={images} />
+                                </Modal>
+                            </ModalGateway>
+                        )
+                    }
+                    <Box paddingY={5}>
+                        <Grid container spacing={1}>
+                            {
+                                images.map((img, idx) => {
+                                    return (
+                                        <Grid item md={4}>
+                                            <img src={img.source} alt='test' style={{ width: '100%', cursor: 'pointer' }} onClick={() => { setIsOpen(true); setImgIdx(idx) }} />
+                                        </Grid>
+                                    )
+                                })
+                            }
+                        </Grid>
+                    </Box>
                 </Box>
-            </Box>
-            {/* <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} bgcolor={'#f3f3f3'} >
+                {/* <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} bgcolor={'#f3f3f3'} >
                 <Typography variant='h1' textAlign='center' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 30, md: 30 }, marginBottom: '10px' }}>
                     플레이스 성공사례
                 </Typography>
@@ -86,6 +91,8 @@ export default function SuccessList() {
                     </Grid>
                 </Box>
             </Box> */}
-        </BasicLayout>
+            </BasicLayout>
+            <Contacts />
+        </div>
     );
 }

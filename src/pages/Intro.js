@@ -5,6 +5,7 @@ import AirplayIcon from '@mui/icons-material/Airplay';
 import CompanyIntro from '../assets/img/company_intro.png';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import Contacts from "../components/Contacts";
+import Header from "../components/Header";
 
 export default function IntroPage() {
 
@@ -53,6 +54,9 @@ export default function IntroPage() {
 
 
     return (
+        <div>
+
+        <Header />
         <BasicLayout title={"ABOUT US"} subTitle={"회사소개"} >
             <Box bgcolor={'#f3f3f3'} >
                 <Box paddingX={{ xs: 3, md: 40 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
@@ -147,5 +151,6 @@ export default function IntroPage() {
             </Box>
             <Contacts />
         </BasicLayout>
+        </div>
     );
 }

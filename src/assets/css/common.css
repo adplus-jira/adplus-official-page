@@ -48,6 +48,154 @@ h2 {
     font-family: 'KboGothic_B' !important;
     color: #333333;
 }
+@media screen and (max-width: 768px) {
+    .virtical-carousel-indicator {
+        display: none;
+    }
+}
+.virtical-carousel-indicator {
+    z-index: 901;
+    position: fixed;
+    top: 50%;
+    right: 60px;
+    text-align: center;
+    padding: 0;
+    margin: -40px 0 0 0;
+}
+.virtical-carousel-indicator::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    bottom: 10px;
+    width: 1px;
+    background: #bababa;
+    transform: translateX(-1px);
+}
+
+.virtical-carousel-indicator li {
+    display: block;
+    position: relative;
+    z-index: 1001;
+    list-style: none;
+    cursor: pointer;
+    width: 25px;
+    height: 33px;
+    padding: 4px;
+    font-weight: bold;
+    margin: 0;
+}
+.virtical-carousel-indicator li::before {
+    content: '';
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+    display: block;
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    margin: -6px 0 0 -7px;
+    background: #ffffff;
+    border: 1px solid #000;
+}
+.virtical-carousel-indicator li.active::before {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    margin: -6px 0 0 -7px;
+    background: #1530a8;
+    border: 1px solid #1530a8;
+}
+.virtical-carousel-indicator li:nth-child(1).active::after {
+    content: "INTRO";
+    padding-top: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -110px;
+    width: 100px;
+    transform: translateY(-50%);
+    text-align: right;
+    color: #e2e2e2;
+}
+.virtical-carousel-indicator li:nth-child(2).active::after {
+    content: "MESSAGE";
+    padding-top: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -110px;
+    width: 100px;
+    transform: translateY(-50%);
+    text-align: right;
+    color: #1530a8;
+}
+.virtical-carousel-indicator li:nth-child(3).active::after {
+    content: "WORK";
+    padding-top: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -110px;
+    width: 100px;
+    transform: translateY(-50%);
+    text-align: right;
+    color: #1530a8;
+}
+.virtical-carousel-indicator li:nth-child(4).active::after {
+    content: "STEP";
+    padding-top: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -110px;
+    width: 100px;
+    transform: translateY(-50%);
+    text-align: right;
+    color: #e2e2e2;
+}
+.virtical-carousel-indicator li:nth-child(5).active::after {
+    content: "모르겠네";
+    padding-top: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -110px;
+    width: 100px;
+    transform: translateY(-50%);
+    text-align: right;
+    color: #e2e2e2;
+}
+.virtical-carousel-indicator li:nth-child(6).active::after {
+    content: "PARTNER";
+    padding-top: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -110px;
+    width: 100px;
+    transform: translateY(-50%);
+    text-align: right;
+    color: #1530a8;
+}
+.virtical-carousel-indicator li:nth-child(7).active::after {
+    content: "CONTACT";
+    padding-top: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -110px;
+    width: 100px;
+    transform: translateY(-50%);
+    text-align: right;
+    color: #1530a8;
+}
 
 .slider {
     margin: 0 20px;

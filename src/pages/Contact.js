@@ -4,12 +4,16 @@ import BasicLayout from '../components/BasicLayout';
 import { Grid } from '@mui/material';
 import TestImg from '../assets/img/main_1.png';
 import { TextField, Button } from '@mui/material';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 export default function Contact() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
     return (
+        <div>
+        <Header />
         <BasicLayout title={'Contact Us'} subTitle={'문의하기'}>
             <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'}>
                 <Grid container spacing={2}>
@@ -48,5 +52,7 @@ export default function Contact() {
                 </Grid>
             </Box>
         </BasicLayout>
+        <Footer />
+        </div>
     );
 }

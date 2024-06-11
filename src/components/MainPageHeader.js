@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -28,22 +28,16 @@ const menuItems = [
 ]
 
 function DrawerAppBar(props) {
-    const { windows } = props;
+    const { windows, activeIndex, setActiveIndex } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [scroll, setScroll] = useState(false);
     const navigation = useNavigate();
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
 
-    const handleScroll = () => {
-        const scrollTop = window.scrollY;
-        setScroll(scrollTop);
-    }
-
     const handleScrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setActiveIndex(0);
     };
     
     const handleKakaoTalkClick = () => {
@@ -66,8 +60,8 @@ function DrawerAppBar(props) {
                     backgroundColor: 'rgb(27 36 80 / 70%)',
                     padding: '10px',
                     transition: 'all 1s',
-                    opacity: scroll > 100 ? 1 : 0,
-                    display: scroll > 100 ? 'block' : 'none',
+                    opacity: activeIndex > 0 ? 1 : 0,
+                    display: activeIndex > 0 ? 'block' : 'none',
                     color: '#fff',
                     '&:hover': {
                         backgroundColor: '#3e53bd'
@@ -93,8 +87,8 @@ function DrawerAppBar(props) {
                     backgroundColor: 'rgb(27 36 80 / 70%)', 
                     padding: '10px', 
                     transition: 'all 1s', 
-                    opacity: scroll > 100 ? 1 : 0, 
-                    display: scroll > 100 ? 'block' : 'none', 
+                    opacity: activeIndex > 0 ? 1 : 0, 
+                    display: activeIndex > 0 ? 'block' : 'none', 
                     color: '#fff',
                     '&:hover': {
                         backgroundColor: '#3e53bd'
@@ -108,12 +102,12 @@ function DrawerAppBar(props) {
 
 
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll, { capture: true });
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        }
-    }, [])
+    // useEffect(() => {
+    //     window.addEventListener('scroll', handleScroll, { capture: true });
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     }
+    // }, [])
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -138,7 +132,7 @@ function DrawerAppBar(props) {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar component="nav" sx={{ bgcolor: scroll ? '#1b2450' : 'transparent', transition: 'all .5s ease', borderBottom: '1px solid #e5e5e5' }} position='fixed' >
+            <AppBar component="nav" sx={{ bgcolor: activeIndex ? '#1b2450' : 'transparent', transition: 'all .5s ease', borderBottom: '1px solid #e5e5e5' }} position='fixed' >
                 <Toolbar sx={{
                     width: '100%', xs: {
                         paddingX: '0px'
@@ -162,7 +156,7 @@ function DrawerAppBar(props) {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, fontFamily: 'KboGothic_B !important' }}
                     >
-                        <img src={Logo} alt='logo' style={{ height: scroll ? '70px' : '100px', transition: 'all .5s ease', cursor: 'pointer' }} onClick={() => navigation("/")} />
+                        <img src={Logo} alt='logo' style={{ height: activeIndex ? '70px' : '100px', transition: 'all .5s ease', cursor: 'pointer' }} onClick={() => navigation("/")} />
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {menuItems.map((item) => (
