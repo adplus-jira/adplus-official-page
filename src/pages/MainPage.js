@@ -17,6 +17,7 @@ import { FullpageContainer, FullpageSection } from '@shinyongjun/react-fullpage'
 import '@shinyongjun/react-fullpage/dist/assets/global.css';
 import Header from '../components/MainPageHeader';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import AdPlus_BG from '../assets/img/adPlus_bg.png';
 
 
 const CircleLayout = ({ value, index }) => {
@@ -291,51 +292,46 @@ function MainPage() {
                                 left={0}
                                 width={'100%'}
                                 height={'100vh'}
+                                margin={'auto'}
                             >
-                                <Typography sx={{ color: '#e3e3e3', fontSize: { md: 50, xs: 27 }, marginBottom: '20px', paddingTop: { md: 30, xs: 30 }, paddingX: { md: 1, xs: 3 } }} textAlign={'center'} variant='h2' marginY={5} >
-                                    클라이언트의 마케팅 성공 파트너, <br />
-                                    애드플러스와 함께 매출을 플러스 해보세요.
-                                </Typography>
-                                <Grid container spacing={1} paddingTop={{ md: 10, xs: 5 }} width={'100%'} maxWidth={1200} margin={'auto'} >
-                                    <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
-                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                                            <PaidOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
-                                        </Box>
-                                        <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >거래 건수</Typography>
-                                        <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(8759)}건</Typography>
-                                    </Grid>
-                                    <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
-                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                                            <AccountBoxOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
-                                        </Box>
-                                        <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >자영업 기업 전문직</Typography>
-                                        <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(2632)}개사</Typography>
-                                    </Grid>
-                                    <Grid item xs={4} md={4} textAlign={'center'}>
-                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                                            <BusinessOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
-                                        </Box>
-                                        <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >월 평균 문의</Typography>
-                                        <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(310)}건</Typography>
-                                    </Grid>
+                                <Box>
+                                    <Typography sx={{ color: '#e3e3e3', fontSize: { md: 50, xs: 27 }, marginBottom: '20px', paddingTop: { md: 30, xs: 30 }, paddingX: { md: 1, xs: 3 } }} textAlign={'center'} variant='h2' marginY={5} >
+                                        클라이언트의 마케팅 성공 파트너, <br />
+                                        애드플러스와 함께 매출을 플러스 해보세요.
+                                    </Typography>
+                                    <Grid container spacing={1} paddingTop={{ md: 10, xs: 5 }} width={'100%'} maxWidth={1200} margin={'auto'} >
+                                        <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
+                                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                                <PaidOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
+                                            </Box>
+                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >거래 건수</Typography>
+                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(8759)}건</Typography>
+                                        </Grid>
+                                        <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
+                                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                                <AccountBoxOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
+                                            </Box>
+                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >자영업 기업 전문직</Typography>
+                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(2632)}개사</Typography>
+                                        </Grid>
+                                        <Grid item xs={4} md={4} textAlign={'center'}>
+                                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                                <BusinessOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
+                                            </Box>
+                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >월 평균 문의</Typography>
+                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(310)}건</Typography>
+                                        </Grid>
 
-                                </Grid>
-                                <Box textAlign={'center'} paddingTop={{ md: 20, xs: 20 }} >
-                                    <KeyboardArrowDownIcon sx={{ color: '#e5e5e5', fontSize: 60, animation: 'blink 1.5s infinite', cursor: 'pointer' }} onClick={() => { setActiveIndex(1) }} />
-                                    <style>
-                                        {`
-                                @keyframes blink {
-                                    0% { opacity: 1; }
-                                    50% { opacity: 0; }
-                                    100% { opacity: 1; }
-                                }
-                                `}
-                                    </style>
+                                    </Grid>
+                                    <Box textAlign={'center'} paddingTop={{ md: 20, xs: 20 }} >
+                                        <KeyboardArrowDownIcon sx={{ color: '#e5e5e5', fontSize: 60, animation: 'blink 1.5s infinite', cursor: 'pointer' }} onClick={() => { setActiveIndex(1) }} />
+                                    </Box>
                                 </Box>
                             </Box>
                         </Box>
                     </FullpageSection>
                     <FullpageSection>
+                        
                         <Grid container paddingY={10} paddingX={{ xs: 3, md: 20 }} maxWidth={2000} margin={'auto'} ref={firstNode}>
                             <Grid item xs={12} md={6} lg={6} paddingX={{ xs: 1, md: 5 }} >
                                 <Box width={'100%'} paddingTop={10}>
@@ -349,23 +345,25 @@ function MainPage() {
                                         애드플러스는 한계 없는 생각과 기술력을 기반으로 변화를 이끌어가겠습니다.<br />
                                     </Typography>
                                     <Button variant="contained" sx={{
-                                            backgroundColor: 'transparent', borderRadius: 20, color: '#3e53bd', marginTop: '20px', fontFamily: 'KboGothic_B', display: 'flex', border: '1px solid #3e53bd', '&:hover': {
-                                                background: 'none',
-                                            }
-                                         }} onClick={() => { navigate('/intro') }} >MORE &nbsp;&nbsp;<ArrowForwardIcon /></Button>
+                                        backgroundColor: 'transparent', borderRadius: 20, color: '#3e53bd', marginTop: '20px', fontFamily: 'KboGothic_B', display: 'flex', border: '1px solid #3e53bd', '&:hover': {
+                                            background: 'none',
+                                        }
+                                    }} onClick={() => { navigate('/intro') }} >MORE &nbsp;&nbsp;<ArrowForwardIcon /></Button>
                                 </Box>
                             </Grid>
                             <Grid item xs={12} md={6} lg={6} padding={3}>
-                                <Box width={{ xs: 224, md: 526 }} height={{ xs: 216, md: 510 }} sx={{
-                                    backgroundImage: `url(${FirstSectionImg})`,
+                                <Box width={{ xs: 300, md: 420 }} height={{ xs: 600, md: 760 }} sx={{
+                                    backgroundImage: `url('https://cdn.imweb.me/thumbnail/20240530/6c283dc49ca5c.gif')`,
                                     backgroundSize: '100%',
                                     backgroundRepeat: 'no-repeat',
-                                    margin: 'auto'
+                                    marginLeft: 'auto',
+                                    marginRight: { xs: 'auto', md: '0' }
                                 }}>
 
                                 </Box>
                             </Grid>
                         </Grid>
+                        <Box width={'100%'} height={'100%'} sx={{ position: 'absolute', zIndex: '-1', backgroundImage: `url(${AdPlus_BG})`, backgroundPositionY: '50%', backgroundSize: '', backgroundPositionX: '50%', backgroundRepeat: 'no-repeat' }} ></Box>
                     </FullpageSection>
 
                     <FullpageSection>
@@ -398,7 +396,7 @@ function MainPage() {
                                                         </Grid>
                                                     )
                                                 })}
-                
+
                                             </Grid>
                                         </Transition>
                                     </Box>

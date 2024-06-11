@@ -48,6 +48,12 @@ h2 {
     font-family: 'KboGothic_B' !important;
     color: #333333;
 }
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 @media screen and (max-width: 768px) {
     .virtical-carousel-indicator {
         display: none;
