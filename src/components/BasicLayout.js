@@ -3,19 +3,20 @@ import MainBanner from "../assets/img/main_banner.jpg";
 import { Box, Typography } from "@mui/material";
 
 
-export default function BasicLayout({ title, subTitle, children }) {
+export default function BasicLayout({ title, subTitle, children, bannerImg }) {
 
     return (
         <div>
             <Box sx={{
-                backgroundImage: `url(${MainBanner})`,
+                backgroundImage: `url(${ bannerImg ? bannerImg : MainBanner})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
+                backgroundPosition: 'center',
                 width: '100%',
                 height: '70vh'
             }}>
                 <Box
-                    bgcolor={'rgba(0, 0, 0, 0.4)'}
+                    bgcolor={'rgba(0, 0, 0, 0.6)'}
                     position={'absolute'}
                     top={0}
                     left={0}

@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import FirstSectionImg from '../assets/img/main_1.png';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Footer from './Footer';
+import Contact_US from '../assets/img/contact-us.jpg';
 
 function Contact(props) {
 
@@ -11,9 +11,9 @@ function Contact(props) {
 
     return (
       <div>
-        <Grid container paddingTop={20} paddingX={{ xs: 3, md: 30 }} maxWidth={2000} margin={'auto'} sx={{ paddingBottom: '32px' }}>
+        <Grid container paddingY={20} paddingX={{ xs: 3, md: 30 }} maxWidth={2000} margin={'auto'}>
           <Grid item xs={12} md={6} lg={6} >
-            <Box width={'100%'} sx={{ fontSize: 23 }}>
+            <Box width={'100%'} sx={{ fontSize: 23 }} paddingBottom={3}>
               <Typography variant="h1" color={'#5161b5'} fontSize={{ xs: 30, md: 40 }}>문의하기</Typography>
                 <hr style={{ width: '100%', height: '1px', backgroundColor: '#5161b5' }} />
               <Typography sx={{ fontSize: { xs: 15, md: 20 }, color: '#757575' }} variant="p">
@@ -27,10 +27,11 @@ function Contact(props) {
             </Box>
           </Grid>
           <Grid item xs={12} md={6} lg={6} >
-            <Box width={{ xs: 224, md: 526 }} height={{ xs: 216, md: 510 }} sx={{
-              backgroundImage: `url(${FirstSectionImg})`,
+            <Box width={{ xs: 224, md: 300 }} height={{ xs: 216, md: 300 }} sx={{
+              backgroundImage: `url(${Contact_US})`,
               backgroundSize: '100%',
               backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
               margin: 'auto'
             }}>
 

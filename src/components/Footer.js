@@ -7,7 +7,7 @@ import { Grid, Typography } from '@mui/material';
 
 const Footer = () => {
     return (
-        <Box component="footer" sx={{ backgroundColor: '#2b2b2b', color: '#adadad', padding: '30px' }}>
+        <Box component="footer" sx={{ backgroundColor: '#2b2b2b', color: '#adadad', padding: '30px', marginTop: '57px' }}>
             <Grid container paddingX={{ xs: 5, md: 30 }} marginBottom={5}>
                 <Grid item xs={12} md={6} lg={6}>
                     <img src={logo} alt="logo" style={{ width: '200px' }} />

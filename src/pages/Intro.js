@@ -6,6 +6,7 @@ import CompanyIntro from '../assets/img/company_intro.png';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import Contacts from "../components/Contacts";
 import Header from "../components/Header";
+import IntroBg from '../assets/img/intro_bg.jpg';
 
 export default function IntroPage() {
 
@@ -57,13 +58,13 @@ export default function IntroPage() {
         <div>
 
         <Header />
-        <BasicLayout title={"ABOUT US"} subTitle={"회사소개"} >
+        <BasicLayout title={"ABOUT US"} subTitle={"회사소개"} bannerImg={IntroBg} >
             <Box bgcolor={'#f3f3f3'} >
                 <Box paddingX={{ xs: 3, md: 40 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
-                    <Typography sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 40, md: 40 }, marginBottom: '10px' }} variant="h1" textAlign={'center'}>
+                    <Typography sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 20, md: 30 }, marginBottom: '10px' }} variant="h1" textAlign={'center'}>
                         인사말
                     </Typography>
-                    <hr style={{ border: 'none', borderTop: '1px solid #000', marginBottom: '20px', width: '50%' }} />
+                    <hr style={{ border: 'none', borderTop: '4px solid #5161b5', marginBottom: '40px', width: 100 }} />
                     <Grid container spacing={3}>
                         <Grid item xs={12} md={6} sx={{ opacity: isInViewport ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport ? '0' : '50px'})` }}>
                             <img src={CompanyIntro} alt="intro_img" style={{ width: '100%', maxWidth: '700px' }} />
@@ -81,41 +82,41 @@ export default function IntroPage() {
                     </Grid>
                 </Box>
             </Box>
-            <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'} >
-                <Typography sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 27, md: 40 }, marginBottom: '10px' }} variant="h1">
+            <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'} id="secondSection" ref={secondSection} >
+                <Typography sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 27, md: 40 }, marginBottom: '10px', opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '50px'})` }} variant="h1">
                     AD PLUS는 <br />
                     <span style={{ fontFamily: 'KboGothic_B !important', color: '#5161b5', fontSize: { xs: 20, md: 40 } }} variant="h1">블로그 마케팅</span> 전문가 집단입니다.
                 </Typography>
-                <Typography sx={{ fontFamily: 'KboGothic_M', fontSize: { xs: 18, md: 20 }, color: '#737373' }} variant="p">
+                <Typography sx={{ fontFamily: 'KboGothic_M', fontSize: { xs: 18, md: 20 }, color: '#737373', opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transitionDelay: '.3s',  transform: `translateY(${isInViewport2 ? '0' : '50px'})` }} variant="p">
                     회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개회사소개
                 </Typography>
-                <Grid container spacing={2} marginTop={10} alignContent={'center'} textAlign={'center'} id="secondSection" ref={secondSection}>
-                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
+                <Grid container spacing={2} marginTop={10} alignContent={'center'} textAlign={'center'}>
+                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transitionDelay: '.5s', transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
                         <Box padding={4} sx={{ backgroundColor: '#efefef', borderRadius: 5, height: 100 }}>
                             <Typography sx={{ justifyContent: 'center' }}>정규직원: <span style={{ fontFamily: 'KboGothic_B', fontSize: 25 }}>5명</span></Typography>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
+                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transitionDelay: '.5s', transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
                         <Box padding={4} sx={{ backgroundColor: '#efefef', borderRadius: 5, height: 100 }}>
                             <Typography sx={{ justifyContent: 'center' }}>정규직원: <span style={{ fontFamily: 'KboGothic_B', fontSize: 25 }}>5명</span></Typography>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
+                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transitionDelay: '.5s', transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
                         <Box padding={4} sx={{ backgroundColor: '#efefef', borderRadius: 5, height: 100 }}>
                             <Typography sx={{ justifyContent: 'center' }}>정규직원: <span style={{ fontFamily: 'KboGothic_B', fontSize: 25 }}>5명</span></Typography>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
+                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transitionDelay: '.5s', transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
                         <Box padding={4} sx={{ backgroundColor: '#efefef', borderRadius: 5, height: 100 }}>
                             <Typography sx={{ justifyContent: 'center' }}>정규직원: <span style={{ fontFamily: 'KboGothic_B', fontSize: 25 }}>5명</span></Typography>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
+                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transitionDelay: '.5s', transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
                         <Box padding={4} sx={{ backgroundColor: '#efefef', borderRadius: 5, height: 100 }}>
                             <Typography sx={{ justifyContent: 'center' }}>정규직원: <span style={{ fontFamily: 'KboGothic_B', fontSize: 25 }}>5명</span></Typography>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
+                    <Grid item xs={12} md={4} lg={4} textAlign={'center'} sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transitionDelay: '.5s', transform: `translateY(${isInViewport2 ? '0' : '50px'})` }}>
                         <Box padding={4} sx={{ backgroundColor: '#efefef', borderRadius: 5, height: 100 }}>
                             <Typography sx={{ justifyContent: 'center' }}>정규직원: <span style={{ fontFamily: 'KboGothic_B', fontSize: 25 }}>5명</span></Typography>
                         </Box>

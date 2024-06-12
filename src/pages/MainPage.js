@@ -18,6 +18,8 @@ import '@shinyongjun/react-fullpage/dist/assets/global.css';
 import Header from '../components/MainPageHeader';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import AdPlus_BG from '../assets/img/adPlus_bg.png';
+import LapTop from '../assets/img/laptop.jpg';
+
 
 
 const CircleLayout = ({ value, index }) => {
@@ -278,61 +280,63 @@ function MainPage() {
                 <FullpageIndicator activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
                 <FullpageContainer activeIndex={activeIndex} setActiveIndex={setActiveIndex} transitionDuration={500} >
                     <FullpageSection>
+                        <Box
+                            bgcolor={'rgba(0, 0, 0, 0.8)'}
+                            position={'absolute'}
+                            width={'100%'}
+                            height={'100vh'}
+                            margin={'auto'}
+                            zIndex={0}
+                        ></Box>
                         <Box sx={{
                             backgroundImage: `url(${Banner})`,
+                            position: 'absolute',
+                            zIndex: '-1',
                             backgroundRepeat: 'no-repeat',
                             backgroundSize: 'cover',
                             width: '100%',
                             height: '100vh'
-                        }}>
-                            <Box
-                                bgcolor={'rgba(0, 0, 0, 0.8)'}
-                                position={'absolute'}
-                                top={0}
-                                left={0}
-                                width={'100%'}
-                                height={'100vh'}
-                                margin={'auto'}
-                            >
-                                <Box>
-                                    <Typography sx={{ color: '#e3e3e3', fontSize: { md: 50, xs: 27 }, marginBottom: '20px', paddingTop: { md: 30, xs: 30 }, paddingX: { md: 1, xs: 3 } }} textAlign={'center'} variant='h2' marginY={5} >
-                                        클라이언트의 마케팅 성공 파트너, <br />
-                                        애드플러스와 함께 매출을 플러스 해보세요.
-                                    </Typography>
-                                    <Grid container spacing={1} paddingTop={{ md: 10, xs: 5 }} width={'100%'} maxWidth={1200} margin={'auto'} >
-                                        <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
-                                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                                                <PaidOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
-                                            </Box>
-                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >거래 건수</Typography>
-                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(8759)}건</Typography>
-                                        </Grid>
-                                        <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
-                                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                                                <AccountBoxOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
-                                            </Box>
-                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >자영업 기업 전문직</Typography>
-                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(2632)}개사</Typography>
-                                        </Grid>
-                                        <Grid item xs={4} md={4} textAlign={'center'}>
-                                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                                                <BusinessOutlinedIcon sx={{ filter: 'invert(100%)', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
-                                            </Box>
-                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >월 평균 문의</Typography>
-                                            <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(310)}건</Typography>
-                                        </Grid>
-
-                                    </Grid>
-                                    <Box textAlign={'center'} paddingTop={{ md: 20, xs: 20 }} >
-                                        <KeyboardArrowDownIcon sx={{ color: '#e5e5e5', fontSize: 60, animation: 'blink 1.5s infinite', cursor: 'pointer' }} onClick={() => { setActiveIndex(1) }} />
+                        }}></Box>
+                        <Box margin={'auto'} maxWidth={2000} color={'#e3e3e3'} zIndex={2} >
+                            <Typography sx={{ color: '#e3e3e3', fontSize: { md: 50, xs: 27 }, marginBottom: '20px', paddingTop: { md: 30, xs: 30 }, paddingX: { md: 1, xs: 3 } }} textAlign={'center'} variant='h2' marginY={5} >
+                                클라이언트의 마케팅 성공 파트너, <br />
+                                애드플러스와 함께 매출을 플러스 해보세요.
+                            </Typography>
+                            <Grid container spacing={1} paddingTop={{ md: 10, xs: 5 }} width={'100%'} maxWidth={1200} margin={'auto'} >
+                                <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
+                                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                        <PaidOutlinedIcon sx={{ fill: 'white', width: { xs: 70, md: 100 }, zIndex: 2, height: { xs: 70, md: 100 } }} />
                                     </Box>
-                                </Box>
+                                    <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >거래 건수</Typography>
+                                    <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(8759)}건</Typography>
+                                </Grid>
+                                <Grid item xs={4} md={4} textAlign={'center'} borderRight={'1px solid #fff'}>
+                                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                        <AccountBoxOutlinedIcon sx={{ fill: 'white', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
+                                    </Box>
+                                    <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >자영업 기업 전문직</Typography>
+                                    <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(2632)}개사</Typography>
+                                </Grid>
+                                <Grid item xs={4} md={4} textAlign={'center'}>
+                                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                                        <BusinessOutlinedIcon sx={{ fill: 'white', width: { xs: 70, md: 100 }, height: { xs: 70, md: 100 } }} />
+                                    </Box>
+                                    <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 15, md: 20 } }} >월 평균 문의</Typography>
+                                    <Typography variant='h2' sx={{ color: '#e3e3e3', fontSize: { xs: 20, md: 30 } }} >{useCountNum(310)}건</Typography>
+                                </Grid>
+
+                            </Grid>
+                            <Box textAlign={'center'} paddingTop={{ md: 20, xs: 20 }} >
+                                <KeyboardArrowDownIcon sx={{ color: '#e5e5e5', fontSize: 60, animation: 'blink 1.5s infinite', cursor: 'pointer' }} onClick={() => { setActiveIndex(1) }} />
                             </Box>
                         </Box>
+
+
+
                     </FullpageSection>
                     <FullpageSection>
-                        
-                        <Grid container paddingY={10} paddingX={{ xs: 3, md: 20 }} maxWidth={2000} margin={'auto'} ref={firstNode}>
+
+                        <Grid container paddingTop={10} paddingX={{ xs: 3, md: 20 }} maxWidth={2000} margin={'auto'} ref={firstNode}>
                             <Grid item xs={12} md={6} lg={6} paddingX={{ xs: 1, md: 5 }} >
                                 <Box width={'100%'} paddingTop={10}>
                                     <Typography fontSize={50} variant='h1'>
@@ -359,7 +363,6 @@ function MainPage() {
                                     marginLeft: 'auto',
                                     marginRight: { xs: 'auto', md: '0' }
                                 }}>
-
                                 </Box>
                             </Grid>
                         </Grid>
@@ -372,77 +375,74 @@ function MainPage() {
                         </Grid>
                     </FullpageSection>
                     <FullpageSection>
-                        <Box width={'100%'}>
-                            <Box width={'100%'} height={'100%'} sx={{
-                                backgroundImage: `url('${SecondSectionImg}')`,
-                                backgroundRepeat: 'no-repeat',
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                            }}>
-                                <Box width={'100%'} height={'100%'} bgcolor={'rgb(23 33 73 / 80%)'} paddingTop={10} paddingY={{ xs: 10, md: 20 }}>
-                                    <Box width={'100%'} paddingX={{ xs: 3, md: 30 }} margin={'auto'} maxWidth={2000} >
-                                        <Typography variant='h1' style={{ marginBottom: '20px', marginTop: '0px', color: '#e3e3e3' }} fontSize={{ xs: 30, md: 40 }}>
-                                            <span style={{ color: '#6471b5' }}>AD PLUS</span>의 광고는<br />
-                                            이 순서대로 <span style={{ color: '#6471b5' }}>진행</span>됩니다.
-                                        </Typography>
+                        <Box width={'100%'} height={'100%'} sx={{
+                            backgroundImage: `url('${LapTop}')`,
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            position: 'absolute',
+                            zIndex: '-1',
+                        }}></Box>
+                        <Box width={'100%'} height={'100%'} bgcolor={'rgb(23 33 73 / 80%)'} zIndex={'-1'} position={'absolute'}></Box>
 
-                                        <hr style={{ border: '2px solid #5161b5', width: 300, margin: 0, marginBottom: '20px' }} />
-                                        <Transition timeout={500} in={true} nodeRef={nodeRef} id="orderList">
-                                            <Grid container ref={nodeRef} spacing={0} paddingY={10} paddingX={2} alignContent={'center'} sx={{ marginTop: '30px' }} maxWidth={1400} margin={'auto'}>
-                                                {adArray.map((value, index) => {
-                                                    return (
-                                                        <Grid item xs={12} sm={6} md={2} key={index} margin={'auto'} style={{ opacity: isInViewport ? 1 : 0, transition: `all 1s`, transitionDelay: `${index / 4}s`, transform: `translateY(${isInViewport ? '0' : '100px'})` }}>
-                                                            <CircleLayout value={value} index={index} />
-                                                        </Grid>
-                                                    )
-                                                })}
+                        <Box width={'100%'} paddingY={10} paddingX={{ xs: 3, md: 30 }} margin={'auto'} maxWidth={2000} >
+                            <Typography variant='h1' style={{ marginBottom: '20px', marginTop: '0px', color: '#e3e3e3' }} fontSize={{ xs: 30, md: 40 }}>
+                                <span style={{ color: '#6471b5' }}>AD PLUS</span>의 광고는<br />
+                                이 순서대로 <span style={{ color: '#6471b5' }}>진행</span>됩니다.
+                            </Typography>
 
+                            <hr style={{ border: '2px solid #5161b5', width: 300, margin: 0, marginBottom: '20px' }} />
+                            <Transition timeout={500} in={true} nodeRef={nodeRef} id="orderList">
+                                <Grid container ref={nodeRef} spacing={0} paddingY={10} paddingX={2} alignContent={'center'} sx={{ marginTop: '30px' }} maxWidth={1400} margin={'auto'}>
+                                    {adArray.map((value, index) => {
+                                        return (
+                                            <Grid item xs={12} sm={6} md={2} key={index} margin={'auto'} style={{ opacity: isInViewport ? 1 : 0, transition: `all 1s`, transitionDelay: `${index / 4}s`, transform: `translateY(${isInViewport ? '0' : '100px'})` }}>
+                                                <CircleLayout value={value} index={index} />
                                             </Grid>
-                                        </Transition>
-                                    </Box>
-                                </Box>
-                            </Box>
+                                        )
+                                    })}
+
+                                </Grid>
+                            </Transition>
                         </Box>
                     </FullpageSection>
                     <FullpageSection>
-                        <Box width={'100%'} >
-                            <Box width={'100%'} height={'100%'} sx={{
-                                backgroundImage: `url('${SecondSectionImg}')`,
-                                backgroundRepeat: 'no-repeat',
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
+                        <Box width={'100%'} height={'100%'} sx={{
+                            backgroundImage: `url('${SecondSectionImg}')`,
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            position: 'absolute',
+                            zIndex: '-1',
+                        }}></Box>
+                        <Box
+                            bgcolor={'rgba(0, 0, 0, 0.7)'}
+                            width={'100%'}
+                            height={'100%'}
+                            zIndex={-1}
+                            position={'absolute'}
+                        ></Box>
+                        <Box width={'100%'} paddingY={10} maxWidth={2000} ref={introRef} margin={'auto'} id="introduce" sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '100px'})` }}>
+                            <Typography sx={{ color: '#e5e5e5', fontSize: 40, marginBottom: '20px' }} textAlign={'center'} variant='h2'>
+                                디자인 하는 광고 회사
+                            </Typography>
+                            <hr style={{ border: '1px solid #e5e5e5', width: 250, margin: 'auto', marginBottom: '20px' }} />
+                            <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: { md: 20, xs: 15 }, marginBottom: '100px' }} textAlign={'center'} paddingX={{ xs: 3, md: 10 }} >
+                                전단지, 명함, 브랜드 웹툰, 모션그래픽, 홈페이지까지<br />
+                                광고뿐만 아니라 브랜드를 위한 다양한 콘텐츠 제작을 지원합니다.
+                            </Typography>
+
+                            <Grid container spacing={1} width={'100%'} marginBottom={5} paddingX={{ xs: 3, md: 30 }} sx={{
+                                display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto'
                             }}>
-                                <Box
-                                    bgcolor={'rgba(0, 0, 0, 0.7)'}
-                                    width={'100%'}
-                                    height={'100%'}
-                                    zIndex={2}
-                                >
-                                    <Box maxWidth={2000} ref={introRef} margin={'auto'} paddingY={20} id="introduce" sx={{ opacity: isInViewport2 ? 1 : 0, transition: `all 1s`, transform: `translateY(${isInViewport2 ? '0' : '100px'})` }}>
-                                        <Typography sx={{ color: '#e5e5e5', fontSize: 40, marginBottom: '20px' }} textAlign={'center'} variant='h2'>
-                                            디자인 하는 광고 회사
-                                        </Typography>
-                                        <hr style={{ border: '1px solid #e5e5e5', width: 250, margin: 'auto', marginBottom: '20px' }} />
-                                        <Typography sx={{ fontFamily: 'KboGothic_M', color: '#e5e5e5', fontSize: { md: 20, xs: 15 }, marginBottom: '100px' }} textAlign={'center'} paddingX={{ xs: 3, md: 10 }} >
-                                            전단지, 명함, 브랜드 웹툰, 모션그래픽, 홈페이지까지<br />
-                                            광고뿐만 아니라 브랜드를 위한 다양한 콘텐츠 제작을 지원합니다.
-                                        </Typography>
 
-                                        <Grid container spacing={1} width={'100%'} marginBottom={5} paddingX={{ xs: 3, md: 30 }} sx={{
-                                            display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto'
-                                        }}>
-
-                                            {cards.map((card, index) => CardLayout({ card, index }))}
-                                        </Grid>
-                                    </Box>
-
-                                </Box>
-                            </Box>
+                                {cards.map((card, index) => CardLayout({ card, index }))}
+                            </Grid>
                         </Box>
                     </FullpageSection>
                     <FullpageSection>
-                        <Box width={'100%'} paddingTop={5} paddingY={20} paddingBottom={{ lg: 15, xs: 5 }} sx={{ bgcolor: '#eff1f9' }} >
-                            <Box margin={'auto'} width={'100%'} maxWidth={2000} paddingX={{ xs: 3, md: 30 }}>
+                        <Box width={'100%'} height={'100%'} zIndex={'-1'} paddingTop={5} paddingY={20} paddingBottom={{ lg: 15, xs: 5 }} bgcolor={'#eff1f9'} position={'absolute'} ></Box>
+                        <Box margin={'auto'} width={'100%'} maxWidth={2000} paddingX={{ xs: 3, md: 30 }}>
                                 <Typography sx={{ color: '#5161b5', fontSize: { xs: 30, md: 40 }, marginBottom: '10px' }} variant='h1' marginY={5} >
                                     협력업체 소개
                                 </Typography>
@@ -492,11 +492,9 @@ function MainPage() {
                                     </Carousel>
                                 </Box>
                             </Box>
-
-                        </Box>
                     </FullpageSection>
                     <FullpageSection>
-                        <Box width={'100%'}>
+                        <Box width={'100%'} margin={'auto'}>
                             <Contacts />
                         </Box>
                     </FullpageSection>

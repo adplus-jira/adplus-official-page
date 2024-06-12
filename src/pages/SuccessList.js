@@ -6,6 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 import LightBox, { Modal, ModalGateway } from 'react-images';
 import Header from '../components/Header';
 import Contacts from '../components/Contacts';
+import SuccessBg from '../assets/img/success_bg.jpg';
 
 export default function SuccessList() {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,7 @@ export default function SuccessList() {
         <div>
             <Header />
 
-            <BasicLayout title={'SUCCESS EXAMPLE'} subTitle={'성공 사례'}>
+            <BasicLayout title={'SUCCESS EXAMPLE'} subTitle={'성공 사례'} bannerImg={SuccessBg}>
                 <Box paddingX={{ xs: 3, md: 20 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'}>
                     <Typography variant='h1' textAlign='center' sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 30, md: 30 }, marginBottom: '10px' }}>
                         플레이스 성공사례

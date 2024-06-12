@@ -14,7 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Logo from '../assets/img/logo.png';
+import Logo from '../assets/img/logo_2.png';
 import { useNavigate } from 'react-router-dom';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 
@@ -45,7 +45,7 @@ function DrawerAppBar(props) {
     const handleScrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-    
+
     const handleKakaoTalkClick = () => {
         
     };

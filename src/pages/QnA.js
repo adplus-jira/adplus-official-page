@@ -3,6 +3,7 @@ import BasicLayout from '../components/BasicLayout';
 import Contacts from '../components/Contacts';
 import { Box, Grid, Typography } from '@mui/material';
 import Header from '../components/Header';
+import QnaBg from '../assets/img/qna_bg.jpg';
 
 export default function QnA() {
 
@@ -51,9 +52,9 @@ export default function QnA() {
     return (
         <div>
             <Header />
-            <BasicLayout title={'Q&A'} subTitle={'자주 묻는 질문'}>
+            <BasicLayout title={'Q&A'} subTitle={'자주 묻는 질문'} bannerImg={QnaBg}>
                 <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'} width={'100%'} >
-                    <Typography sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 40, md: 40 }, marginBottom: '10px' }} variant="h1" textAlign={'center'}>
+                    <Typography sx={{ fontFamily: 'KboGothic_B', fontSize: { xs: 20, md: 30 }, marginBottom: '10px' }} variant="h1" textAlign={'center'}>
                         자주 묻는 질문
                     </Typography>
                     <hr style={{ border: 'none', borderTop: '4px solid #5161b5', marginBottom: '20px', width: 100 }} />

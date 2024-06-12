@@ -6,6 +6,7 @@ import TestImg from '../assets/img/main_1.png';
 import { TextField, Button } from '@mui/material';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import ContactUsBg from '../assets/img/contactus_bg.jpg';
 
 export default function Contact() {
     useEffect(() => {
@@ -14,7 +15,7 @@ export default function Contact() {
     return (
         <div>
         <Header />
-        <BasicLayout title={'Contact Us'} subTitle={'문의하기'}>
+        <BasicLayout title={'Contact Us'} subTitle={'문의하기'} bannerImg={ContactUsBg}>
             <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
