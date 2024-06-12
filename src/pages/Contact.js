@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import BasicLayout from '../components/BasicLayout';
 import { Grid } from '@mui/material';
-import TestImg from '../assets/img/main_1.png';
+import ContactUsIcon from '../assets/img/contactUs_icon.png';
 import { TextField, Button } from '@mui/material';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -19,8 +19,8 @@ export default function Contact() {
             <Box paddingX={{ xs: 3, md: 30 }} paddingY={10} maxWidth={2000} margin={'auto'}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
-                        <Box textAlign={'left'}>
-                            <img src={TestImg} alt="test" style={{ width: '100%', maxWidth: '400px', height: '400px', margin: 'auto' }} />
+                        <Box textAlign={'center'}>
+                            <img src={ContactUsIcon} alt="test" style={{ width: '100%', maxWidth: '400px', height: '400px', margin: 'auto' }} />
                         </Box>
                         <Typography variant='h2' fontSize={40} color={'#5161b5'} marginTop={3} marginBottom={4}>문의하기</Typography>
                         <Typography variant='p' fontSize={20} color={'#333'}>
@@ -34,7 +34,7 @@ export default function Contact() {
                     <Grid item xs={12} md={6} >
                         <Box textAlign={'left'} boxShadow={2} width={'100%'} height={'100%'} paddingX={5} paddingY={5}>
                             <Box textAlign={'center'} marginTop={3} >
-                                <Typography variant='h1' fontSize={35} color={'#5161b5'} marginTop={3} marginBottom={4} alignContent={'center'}>제안서</Typography>
+                                {/* <Typography variant='h1' fontSize={35} color={'#5161b5'} marginTop={3} marginBottom={4} alignContent={'center'}>제안서</Typography> */}
                             </Box>
 
                             <form>

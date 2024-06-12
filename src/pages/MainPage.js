@@ -441,13 +441,13 @@ function MainPage() {
                         </Box>
                     </FullpageSection>
                     <FullpageSection>
-                        <Box width={'100%'} height={'100%'} zIndex={'-1'} paddingTop={5} paddingY={20} paddingBottom={{ lg: 15, xs: 5 }} bgcolor={'#eff1f9'} position={'absolute'} ></Box>
+                        <Box width={'100%'} height={'100%'} zIndex={'-1'} paddingTop={5} paddingY={20} paddingBottom={{ lg: 15, xs: 5 }} bgcolor={'#161c35'} position={'absolute'} ></Box>
                         <Box margin={'auto'} width={'100%'} maxWidth={2000} paddingX={{ xs: 3, md: 30 }}>
                                 <Typography sx={{ color: '#5161b5', fontSize: { xs: 30, md: 40 }, marginBottom: '10px' }} variant='h1' marginY={5} >
                                     협력업체 소개
                                 </Typography>
                                 <hr style={{ border: '1px solid #5161b5', width: 250, margin: 0, marginBottom: '10px' }} />
-                                <Typography sx={{ color: '#757575', fontSize: { md: 20, xs: 15 }, marginBottom: '20px' }} variant='p' marginBottom={5} >
+                                <Typography sx={{ color: '#e2e2e2', fontSize: { md: 20, xs: 15 }, marginBottom: '20px' }} variant='p' marginBottom={5} >
                                     AD Plus 와 함께하는 업체들을 소개합니다.
                                 </Typography>
 
@@ -494,7 +494,7 @@ function MainPage() {
                             </Box>
                     </FullpageSection>
                     <FullpageSection>
-                        <Box width={'100%'} margin={'auto'}>
+                        <Box width={'100%'} margin={'auto'} bgcolor={'#f5f5f5'}>
                             <Contacts />
                         </Box>
                     </FullpageSection>

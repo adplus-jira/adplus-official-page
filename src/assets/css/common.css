@@ -32,7 +32,7 @@
 body {
     font-family: 'KboGothic_M' !important;
     color: #333333;
-    background-color: #f7f7f7;
+    background-color: #f5f5f5 !important;
 }
 
 p {
@@ -115,8 +115,8 @@ h2 {
     height: 13px;
     border-radius: 50%;
     margin: -6px 0 0 -7px;
-    background: #1530a8;
-    border: 1px solid #1530a8;
+    background: #b91212;
+    border: 1px solid #9c1b1b;
 }
 .virtical-carousel-indicator li:nth-child(1).active::after {
     content: "MAIN";
@@ -140,7 +140,7 @@ h2 {
     width: 100px;
     transform: translateY(-50%);
     text-align: right;
-    color: #1530a8;
+    color: #1f1f1f;
 }
 .virtical-carousel-indicator li:nth-child(3).active::after {
     content: "WORK";
@@ -152,7 +152,7 @@ h2 {
     width: 100px;
     transform: translateY(-50%);
     text-align: right;
-    color: #1530a8;
+    color: #1f1f1f;
 }
 .virtical-carousel-indicator li:nth-child(4).active::after {
     content: "STEP";
@@ -188,7 +188,7 @@ h2 {
     width: 100px;
     transform: translateY(-50%);
     text-align: right;
-    color: #1530a8;
+    color: #e2e2e2;
 }
 .virtical-carousel-indicator li:nth-child(7).active::after {
     content: "CONTACT";
@@ -200,7 +200,7 @@ h2 {
     width: 100px;
     transform: translateY(-50%);
     text-align: right;
-    color: #1530a8;
+    color: #1f1f1f;
 }
 
 .slider {
