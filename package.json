@@ -16,19 +16,18 @@
     "fullpage.js": "^4.0.22",
     "gh-pages": "^6.1.1",
     "mui-image-slider": "^1.0.10",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-fullpage": "^0.1.19",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-fullpage": "^0.1.1",
     "react-google-recaptcha": "^3.1.0",
-    "react-images": "^1.2.0-beta.7",
     "react-intersection-observer": "^9.10.3",
     "react-material-ui-carousel": "^3.4.2",
     "react-multi-carousel": "^2.8.5",
     "react-router-dom": "^6.23.1",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.5",
     "web-vitals": "^2.1.4",
-    "yarn": "^1.22.22"
+    "yet-another-react-lightbox": "^3.28.0"
   },
   "homepage": "https://adplus-jira.github.io/adplus-official-page/",
   "peerDependencies": {
@@ -59,5 +58,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "overrides": {
+    "glob": "^10.4.6",
+    "npm": "^11.0.0"
   }
 }

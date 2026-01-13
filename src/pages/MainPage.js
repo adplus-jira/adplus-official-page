@@ -14,7 +14,7 @@ import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
 import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
 import { FullpageContainer, FullpageSection } from '@shinyongjun/react-fullpage';
-import '@shinyongjun/react-fullpage/dist/assets/global.css';
+import '@shinyongjun/react-fullpage/css';
 import Header from '../components/MainPageHeader';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import AdPlus_BG from '../assets/img/adPlus_bg.png';

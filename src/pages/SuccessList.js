@@ -3,7 +3,8 @@ import BasicLayout from '../components/BasicLayout';
 import { Box, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
 import 'react-multi-carousel/lib/styles.css';
-import LightBox, { Modal, ModalGateway } from 'react-images';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 import Header from '../components/Header';
 import Contacts from '../components/Contacts';
 import SuccessBg from '../assets/img/success_bg.jpg';
@@ -11,15 +12,15 @@ import SuccessBg from '../assets/img/success_bg.jpg';
 export default function SuccessList() {
     const [isOpen, setIsOpen] = useState(false);
     const images = [
-        { source: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
-        { source: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
-        { source: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
-        { source: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
-        { source: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
-        { source: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
-        { source: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
-        { source: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
-        { source: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' }
+        { src: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
+        { src: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
+        { src: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
+        { src: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
+        { src: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
+        { src: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
+        { src: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
+        { src: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' },
+        { src: 'https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' }
     ];
     const [imgIdx, setImgIdx] = useState(0);
 
@@ -37,22 +38,19 @@ export default function SuccessList() {
                         플레이스 성공사례
                     </Typography>
                     <hr style={{ border: 'none', borderTop: '4px solid #5161b5', marginBottom: '20px', width: 100 }} />
-                    {
-                        isOpen && (
-                            <ModalGateway>
-                                <Modal src='https://cdn.imweb.me/thumbnail/20240516/676c3a662c3cf.png' onClose={() => setIsOpen(false)}>
-                                    <LightBox currentIndex={imgIdx} views={images} />
-                                </Modal>
-                            </ModalGateway>
-                        )
-                    }
+                    <Lightbox
+                        open={isOpen}
+                        close={() => setIsOpen(false)}
+                        index={imgIdx}
+                        slides={images}
+                    />
                     <Box paddingY={5}>
                         <Grid container spacing={1}>
                             {
                                 images.map((img, idx) => {
                                     return (
-                                        <Grid item md={4}>
-                                            <img src={img.source} alt='test' style={{ width: '100%', cursor: 'pointer' }} onClick={() => { setIsOpen(true); setImgIdx(idx) }} />
+                                        <Grid item md={4} key={idx}>
+                                            <img src={img.src} alt='test' style={{ width: '100%', cursor: 'pointer' }} onClick={() => { setIsOpen(true); setImgIdx(idx) }} />
                                         </Grid>
                                     )
                                 })
